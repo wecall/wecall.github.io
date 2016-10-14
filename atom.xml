@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wecall.github.io/"/>
-  <updated>2016-03-04T09:05:24.000Z</updated>
+  <updated>2016-10-14T11:04:02.000Z</updated>
   <id>http://wecall.github.io/</id>
   
   <author>
@@ -14,6 +14,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker 日记</title>
+    <link href="http://wecall.github.io/2016/10/14/Docker-%E6%97%A5%E8%AE%B0/"/>
+    <id>http://wecall.github.io/2016/10/14/Docker-日记/</id>
+    <published>2016-10-14T11:03:08.000Z</published>
+    <updated>2016-10-14T11:04:02.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Docker&quot;&gt;&lt;a href=&quot;#Docker&quot; class=&quot;headerlink&quot; title=&quot;Docker&quot;&gt;&lt;/a&gt;Docker&lt;/h1&gt;&lt;p&gt;它提供了一个可以运行你的应用程序的容器。它原本是&lt;code&gt;dotCloud&lt;/code&gt;启动的一个开源的业余项目。吸引了大量的关注和讨论，导致&lt;code&gt;dotCloud&lt;/code&gt;把它重命名到&lt;code&gt;Docker Inc&lt;/code&gt;。它最初是用&lt;code&gt;Go&lt;/code&gt;语言编写的，它就相当于是加在 LXC[LinuX Containers(linux容器)]上的管道，允许开发者在更高层次的概念上工作。&lt;/p&gt;
+&lt;p&gt;它扩展了 Linux 容器（Linux Containers），或着说 LXC，通过一个高层次的API为进程单独提供了一个轻量级的虚拟环境。它利用了&lt;code&gt;LXC&lt;/code&gt;， &lt;code&gt;cgroups&lt;/code&gt;和&lt;code&gt;Linux&lt;/code&gt;自己的内核。和传统的虚拟机不同的是，一个&lt;code&gt;Docker&lt;/code&gt;容器并不包含一个单独的操作系统，而是基于已有的基础设施中操作系统提供的功能来运行的。&lt;/p&gt;
+&lt;h1 id=&quot;Docker-虚拟化技术&quot;&gt;&lt;a href=&quot;#Docker-虚拟化技术&quot; class=&quot;headerlink&quot; title=&quot;Docker | 虚拟化技术&quot;&gt;&lt;/a&gt;Docker | 虚拟化技术&lt;/h1&gt;&lt;p&gt;1、虚拟化技术依赖物理CPU和内存，是硬件级别的；而docker构建在操作系统上，利用操作系统的containerization技术，所以docker甚至可以在虚拟机上运行；&lt;br&gt;2、虚拟化系统一般都是指操作系统镜像，比较复杂，称为“系统“；而docker开源而且轻量，称为“容器”，单个容器适合部署少量应用，比如部署一个redis；&lt;br&gt;3、虚拟化技术使用快照来保存状态；而docker在保存状态上不仅更为轻便和低成本，而且引入了类似源代码管理机制，将容器的快照历史版本一一记录，切换成本很低；&lt;br&gt;4、虚拟化技术在构建系统的时候较为复杂，需要大量的人力；而docker可以通过Dockfile来构建整个容器，重启和构建速度很快。更重要的是Dockfile可以手动编写，这样应用程序开发人员可以通过发布Dockfile来指导系统环境和依赖，这样对于持续交付十分有利。&lt;/p&gt;
+&lt;h1 id=&quot;Docker-原理&quot;&gt;&lt;a href=&quot;#Docker-原理&quot; class=&quot;headerlink&quot; title=&quot;Docker 原理&quot;&gt;&lt;/a&gt;Docker 原理&lt;/h1&gt;&lt;p&gt;&lt;code&gt;Docker&lt;/code&gt;会像一个可移植的容器引擎那样工作，它把应用程序及所有程序的依赖环境打包到一个虚拟容器中，这个虚拟容器可以运行在任何一种Linux服务器上。这大大地提高了程序运行的灵活性和可移植性，无论需不需要许可、是在公共云还是私密云、是不是裸机环境等等。&lt;br&gt;&lt;code&gt;Docker&lt;/code&gt;也是一个云计算平台，它利用Linux的LXC、AUFU、Go语言、cgroup实现了资源的独立，可以很轻松的实现文件、资源、网络等隔离，其最终的目标是实现类似PaaS平台的应用隔离。&lt;/p&gt;
+&lt;h1 id=&quot;docker-特性&quot;&gt;&lt;a href=&quot;#docker-特性&quot; class=&quot;headerlink&quot; title=&quot;docker 特性&quot;&gt;&lt;/a&gt;docker 特性&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;文件系统隔离&lt;/code&gt; 每个进程容器运行在完全独立的根文件系统里&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;资源隔离&lt;/code&gt;     可以使用cgroup为每个进程容器分配不同的系统资源，例如CPU和内存&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;网络隔离&lt;/code&gt; 每个进程容器运行在自己的网络命名空间里，拥有自己的虚拟接口和IP地址&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;写时复制&lt;/code&gt; 采用写时复制方式创建根文件系统，这让部署变得极其快捷，并且节省内存和硬盘空间&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;日志记录&lt;/code&gt; Docker将会收集和记录每个进程容器的标准流（stdout/stderr/stdin），用于实时检索或批量检索&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;变更管理&lt;/code&gt; 容器文件系统的变更可以提交到新的映像中，并可重复使用以创建更多的容器。无需使用模板或手动配置&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;交互式Shell&lt;/code&gt; Docker可以分配一个虚拟终端并关联到任何容器的标准输入上，例如运行一个一次性交互shell&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Docker&quot;&gt;&lt;a href=&quot;#Docker&quot; class=&quot;headerlink&quot; title=&quot;Docker&quot;&gt;&lt;/a&gt;Docker&lt;/h1&gt;&lt;p&gt;它提供了一个可以运行你的应用程序的容器。它原本是&lt;code&gt;dotCloud&lt;/code&gt;启动的一个开源的业
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>面向对象到底需要知道什么？</title>
+    <link href="http://wecall.github.io/2016/04/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%B0%E5%BA%95%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88%EF%BC%9F/"/>
+    <id>http://wecall.github.io/2016/04/19/面向对象到底需要知道什么？/</id>
+    <published>2016-04-19T09:38:33.000Z</published>
+    <updated>2016-04-19T10:29:44.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;技术名词-关键字&quot;&gt;&lt;a href=&quot;#技术名词-关键字&quot; class=&quot;headerlink&quot; title=&quot;技术名词 关键字&quot;&gt;&lt;/a&gt;技术名词 &lt;code&gt;关键字&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;###类(class)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;概念&lt;br&gt;类是一种抽象的数据类型&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;class 类名&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;声明和定义&lt;br&gt;声明只是告诉编译器有这么一个变量，但是没有为它分配空间；定义则是为该变量分配空间。所以变量可以重复声明，但是不能重复定义。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;###对象(object)&lt;/p&gt;
+&lt;p&gt;###方法(function)&lt;/p&gt;
+&lt;p&gt;###属性(attribute)&lt;/p&gt;
+&lt;p&gt;###事件(event)&lt;/p&gt;
+&lt;p&gt;###构造函数(constructor)&lt;/p&gt;
+&lt;p&gt;###析构函数(destructor)&lt;/p&gt;
+&lt;p&gt;###继承(extends)&lt;/p&gt;
+&lt;p&gt;###重写&lt;/p&gt;
+&lt;p&gt;###接口&lt;/p&gt;
+&lt;p&gt;###封装&lt;/p&gt;
+&lt;p&gt;###重载(overloaded)&lt;/p&gt;
+&lt;p&gt;###多态&lt;/p&gt;
+&lt;p&gt;###实体&lt;/p&gt;
+&lt;p&gt;###UML&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;技术名词-关键字&quot;&gt;&lt;a href=&quot;#技术名词-关键字&quot; class=&quot;headerlink&quot; title=&quot;技术名词 关键字&quot;&gt;&lt;/a&gt;技术名词 &lt;code&gt;关键字&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;###类(class)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;概念&lt;br&gt;类是
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
