@@ -47,6 +47,79 @@
   </entry>
   
   <entry>
+    <title>Docker 日记</title>
+    <link href="http://wecall.github.io/2016/10/14/docker%E6%97%A5%E8%AE%B0/"/>
+    <id>http://wecall.github.io/2016/10/14/docker日记/</id>
+    <published>2016-10-14T11:03:08.000Z</published>
+    <updated>2017-10-09T14:20:25.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Docker&quot;&gt;&lt;a href=&quot;#Docker&quot; class=&quot;headerlink&quot; title=&quot;Docker&quot;&gt;&lt;/a&gt;Docker&lt;/h1&gt;&lt;p&gt;它提供了一个可以运行你的应用程序的容器。它原本是&lt;code&gt;dotCloud&lt;/code&gt;启动的一个开源的业余项目。吸引了大量的关注和讨论，导致&lt;code&gt;dotCloud&lt;/code&gt;把它重命名到&lt;code&gt;Docker Inc&lt;/code&gt;。它最初是用&lt;code&gt;Go&lt;/code&gt;语言编写的，它就相当于是加在 LXC[LinuX Containers(linux容器)]上的管道，允许开发者在更高层次的概念上工作。&lt;/p&gt;
+&lt;p&gt;它扩展了 Linux 容器（Linux Containers），或着说 LXC，通过一个高层次的API为进程单独提供了一个轻量级的虚拟环境。它利用了&lt;code&gt;LXC&lt;/code&gt;， &lt;code&gt;cgroups&lt;/code&gt;和&lt;code&gt;Linux&lt;/code&gt;自己的内核。和传统的虚拟机不同的是，一个&lt;code&gt;Docker&lt;/code&gt;容器并不包含一个单独的操作系统，而是基于已有的基础设施中操作系统提供的功能来运行的。&lt;/p&gt;
+&lt;h1 id=&quot;Docker-虚拟化技术&quot;&gt;&lt;a href=&quot;#Docker-虚拟化技术&quot; class=&quot;headerlink&quot; title=&quot;Docker | 虚拟化技术&quot;&gt;&lt;/a&gt;Docker | 虚拟化技术&lt;/h1&gt;&lt;p&gt;1、虚拟化技术依赖物理CPU和内存，是硬件级别的；而docker构建在操作系统上，利用操作系统的containerization技术，所以docker甚至可以在虚拟机上运行；&lt;br&gt;2、虚拟化系统一般都是指操作系统镜像，比较复杂，称为“系统“；而docker开源而且轻量，称为“容器”，单个容器适合部署少量应用，比如部署一个redis；&lt;br&gt;3、虚拟化技术使用快照来保存状态；而docker在保存状态上不仅更为轻便和低成本，而且引入了类似源代码管理机制，将容器的快照历史版本一一记录，切换成本很低；&lt;br&gt;4、虚拟化技术在构建系统的时候较为复杂，需要大量的人力；而docker可以通过Dockfile来构建整个容器，重启和构建速度很快。更重要的是Dockfile可以手动编写，这样应用程序开发人员可以通过发布Dockfile来指导系统环境和依赖，这样对于持续交付十分有利。&lt;/p&gt;
+&lt;h1 id=&quot;Docker-原理&quot;&gt;&lt;a href=&quot;#Docker-原理&quot; class=&quot;headerlink&quot; title=&quot;Docker 原理&quot;&gt;&lt;/a&gt;Docker 原理&lt;/h1&gt;&lt;p&gt;&lt;code&gt;Docker&lt;/code&gt;会像一个可移植的容器引擎那样工作，它把应用程序及所有程序的依赖环境打包到一个虚拟容器中，这个虚拟容器可以运行在任何一种Linux服务器上。这大大地提高了程序运行的灵活性和可移植性，无论需不需要许可、是在公共云还是私密云、是不是裸机环境等等。&lt;br&gt;&lt;code&gt;Docker&lt;/code&gt;也是一个云计算平台，它利用Linux的LXC、AUFU、Go语言、cgroup实现了资源的独立，可以很轻松的实现文件、资源、网络等隔离，其最终的目标是实现类似PaaS平台的应用隔离。&lt;/p&gt;
+&lt;h1 id=&quot;docker-特性&quot;&gt;&lt;a href=&quot;#docker-特性&quot; class=&quot;headerlink&quot; title=&quot;docker 特性&quot;&gt;&lt;/a&gt;docker 特性&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;文件系统隔离&lt;/code&gt; 每个进程容器运行在完全独立的根文件系统里&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;资源隔离&lt;/code&gt;    可以使用cgroup为每个进程容器分配不同的系统资源，例如CPU和内存&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;网络隔离&lt;/code&gt; 每个进程容器运行在自己的网络命名空间里，拥有自己的虚拟接口和IP地址&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;写时复制&lt;/code&gt; 采用写时复制方式创建根文件系统，这让部署变得极其快捷，并且节省内存和硬盘空间&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;日志记录&lt;/code&gt; Docker将会收集和记录每个进程容器的标准流（stdout/stderr/stdin），用于实时检索或批量检索&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;变更管理&lt;/code&gt; 容器文件系统的变更可以提交到新的映像中，并可重复使用以创建更多的容器。无需使用模板或手动配置&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;交互式Shell&lt;/code&gt; Docker可以分配一个虚拟终端并关联到任何容器的标准输入上，例如运行一个一次性交互shell&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Docker&quot;&gt;&lt;a href=&quot;#Docker&quot; class=&quot;headerlink&quot; title=&quot;Docker&quot;&gt;&lt;/a&gt;Docker&lt;/h1&gt;&lt;p&gt;它提供了一个可以运行你的应用程序的容器。它原本是&lt;code&gt;dotCloud&lt;/code&gt;启动的一个开源的业
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>面向对象到底需要知道什么？</title>
+    <link href="http://wecall.github.io/2016/04/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%B0%E5%BA%95%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/"/>
+    <id>http://wecall.github.io/2016/04/19/面向对象到底要知道什么/</id>
+    <published>2016-04-19T09:38:33.000Z</published>
+    <updated>2017-10-09T14:01:15.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;技术名词-关键字&quot;&gt;&lt;a href=&quot;#技术名词-关键字&quot; class=&quot;headerlink&quot; title=&quot;技术名词 关键字&quot;&gt;&lt;/a&gt;技术名词 &lt;code&gt;关键字&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;###类(class)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;概念&lt;br&gt;类是一种抽象的数据类型&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;class 类名&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;声明和定义&lt;br&gt;声明只是告诉编译器有这么一个变量，但是没有为它分配空间；定义则是为该变量分配空间。所以变量可以重复声明，但是不能重复定义。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;###对象(object)&lt;/p&gt;
+&lt;p&gt;###方法(function)&lt;/p&gt;
+&lt;p&gt;###属性(attribute)&lt;/p&gt;
+&lt;p&gt;###事件(event)&lt;/p&gt;
+&lt;p&gt;###构造函数(constructor)&lt;/p&gt;
+&lt;p&gt;###析构函数(destructor)&lt;/p&gt;
+&lt;p&gt;###继承(extends)&lt;/p&gt;
+&lt;p&gt;###重写&lt;/p&gt;
+&lt;p&gt;###接口&lt;/p&gt;
+&lt;p&gt;###封装&lt;/p&gt;
+&lt;p&gt;###重载(overloaded)&lt;/p&gt;
+&lt;p&gt;###多态&lt;/p&gt;
+&lt;p&gt;###实体&lt;/p&gt;
+&lt;p&gt;###UML&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;技术名词-关键字&quot;&gt;&lt;a href=&quot;#技术名词-关键字&quot; class=&quot;headerlink&quot; title=&quot;技术名词 关键字&quot;&gt;&lt;/a&gt;技术名词 &lt;code&gt;关键字&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;###类(class)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;概念&lt;br&gt;类是
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>面向对象到底需要知道什么？</title>
     <link href="http://wecall.github.io/2016/04/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%B0%E5%BA%95%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88%EF%BC%9F/"/>
     <id>http://wecall.github.io/2016/04/19/面向对象到底需要知道什么？/</id>
@@ -112,6 +185,1262 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>决定写点什么</title>
+    <link href="http://wecall.github.io/2016/01/21/%E8%9A%82%E8%9A%81%E5%AF%B9%E8%AF%9D-%E5%86%B3%E5%AE%9A%E5%86%99%E7%82%B9%E4%BB%80%E4%B9%88/"/>
+    <id>http://wecall.github.io/2016/01/21/蚂蚁对话-决定写点什么/</id>
+    <published>2016-01-21T01:25:37.000Z</published>
+    <updated>2016-01-25T12:56:55.000Z</updated>
+    
+    <content type="html">&lt;p&gt;##蚂蚁对话&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; 在知乎上搜索到一个话题，[#大家写博客的目的是什么](http://www.zhihu.com/question/19914819?sort=created)，各种情绪抒发，触动了我想写点什么的冲动。一切都不晚，从现在开始，坚持写点什么。模拟一个虚拟的对象进行实时对话。以这个思路制作这个系列的话题，侧重一些不成熟的想法对撞，希望能摩擦出绚丽火花。
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;和你只差点击的距离&quot;&gt;&lt;a href=&quot;#和你只差点击的距离&quot; class=&quot;headerlink&quot; title=&quot;和你只差点击的距离&quot;&gt;&lt;/a&gt;和你只差点击的距离&lt;/h3&gt;&lt;p&gt;你的圈子决定了你的收入。一句话赤裸裸的揭露生活的档次，觉得被扒的一丝不挂。细细计算经常有联系的十个人，再粗略计算一下他们的平均收入水平≈现在你自己的收入。怎么办，第一个想法就是拓宽朋友圈？通过自己的兴趣去拓展关系圈，篮球？跑步？看书？技术？这些都是学生时代结束所能想到的属于自己的兴趣点。独自运动或者学习，毫无发展空间，无法对外寻求更宽广的合作。分享一些新奇的观点，寻找一些技术解决方案，分享一些运动技巧，才能让自己看的更远，学的更广，追求更高。这种对话是一种寻找志同道合朋友的形式，比原始的交流方式针对沟通的内容方面能深入到一个层次。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##蚂蚁对话&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; 在知乎上搜索到一个话题，[#大家写博客的目的是什么](http://www.zhihu.com/question/19914819?sort=created)，各种情绪抒发，触动了我想写点什么的冲动。一切都不晚，从现在开
+    
+    </summary>
+    
+      <category term="文字感官" scheme="http://wecall.github.io/categories/%E6%96%87%E5%AD%97%E6%84%9F%E5%AE%98/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>逆向工程</title>
+    <link href="http://wecall.github.io/2015/09/11/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/"/>
+    <id>http://wecall.github.io/2015/09/11/逆向工程/</id>
+    <published>2015-09-11T09:04:05.000Z</published>
+    <updated>2016-01-21T04:43:21.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;初步整理: 第二次因为项目接触逆向工程&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  回想第一次反编译App的项目,针对一个技术功能点进行分析,整合到我们自己的App中,距今已经1年多了，临时接了这么个任务完全是因为领导的一时兴起(他说,懂Java是吧,手机App了解吗,现在有这么个功能需要实现,你去了解这个App实现方式)&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;初步整理: 第二次因为项目接触逆向工程&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  回想第一次反编译App的项目,针对一个技术功能点进行分析,整合到我们自己的App中,距今已经1年多了，临时接了这么个任务完全是因为领导的一时兴起(他说,懂Java
+    
+    </summary>
+    
+      <category term="技术文档" scheme="http://wecall.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/"/>
+    
+    
+      <category term="反编译" scheme="http://wecall.github.io/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+    
+      <category term="逆向工程" scheme="http://wecall.github.io/tags/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>不知道拒绝</title>
+    <link href="http://wecall.github.io/2015/05/29/%E4%B8%8D%E7%9F%A5%E9%81%93%E6%8B%92%E7%BB%9D/"/>
+    <id>http://wecall.github.io/2015/05/29/不知道拒绝/</id>
+    <published>2015-05-29T04:52:50.000Z</published>
+    <updated>2016-10-17T08:42:13.000Z</updated>
+    
+    <content type="html">&lt;p&gt;最近，回想起来总觉得自己很忙，各种事情不断的围绕在身边，这事那事感觉一直很忙碌的感觉，但是找不到一件成功的事情，是不是有点不对劲？答案是肯定的。稍微找到了一个能安慰自己的方法，就是感觉自己不会拒绝，因为年轻，感觉自己精力充沛，什么事情都能干，什么事情都能干成的说法。对待软件开发的状态一直是错的，找个人做的项目，要么需求人根本不了解这个行业，一心只想着赚钱，哪里考虑自己的产品是不是真的有效，这些人提出的项目需求，一般都是根据现有的网站拼凑起来的，给你一句话，我想要一个类似于XX的网站，功能多么的简单，页面稍微改改什么什么的；&lt;/p&gt;
+&lt;p&gt;针对产品这些人不会用心去对待，仅仅是一个工具，对数人对其成本觉得很低，几千到几万之间不等。还有一种就是赶着上线，在哪里买的源码或者从哪个公司带出来的源码等。又不知道里面到底是什么，什么功能到底实现成什么样子了，找一个半懂的人继续维护，帮我改成这样那样，一个月之后我们上线。&lt;/p&gt;
+&lt;p&gt;….&lt;br&gt;蹦蹦蹦，生活就是这样，兼职的工作比较难以权衡。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近，回想起来总觉得自己很忙，各种事情不断的围绕在身边，这事那事感觉一直很忙碌的感觉，但是找不到一件成功的事情，是不是有点不对劲？答案是肯定的。稍微找到了一个能安慰自己的方法，就是感觉自己不会拒绝，因为年轻，感觉自己精力充沛，什么事情都能干，什么事情都能干成的说法。对待软件
+    
+    </summary>
+    
+      <category term="管理经验" scheme="http://wecall.github.io/categories/%E7%AE%A1%E7%90%86%E7%BB%8F%E9%AA%8C/"/>
+    
+    
+      <category term="技术" scheme="http://wecall.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>互联网式策划</title>
+    <link href="http://wecall.github.io/2015/03/06/%E4%BA%92%E8%81%94%E7%BD%91%E5%BC%8F%E7%AD%96%E5%88%92/"/>
+    <id>http://wecall.github.io/2015/03/06/互联网式策划/</id>
+    <published>2015-03-06T09:01:18.000Z</published>
+    <updated>2016-01-21T04:40:22.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;我没有打算去收集各大土豪们的发红包活动，心里一直在蠢蠢欲动策划一些互联网活动，可惜自己才能有限，往往没有好的计划，空空的羡慕大公司的活动。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;[关注]&lt;/strong&gt; 互联网策划公众平台&lt;br&gt;&lt;strong&gt;[目的]&lt;/strong&gt; 人人都是策划师&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[咬文爵字]&lt;/strong&gt; 到底什么是策划&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;是指某件事情的逻辑顺序，也称创意策划。说的简单点就是想点子去办事。[大师解读]就是通过实践活动获取最佳效果的智慧。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;[吐槽]：果然是大师，一句话说了让人浮想联翩，一字一句解析，能够挖掘深层次的意义。提升了策划名词的高度。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[现状]&lt;/strong&gt;  &lt;em&gt;个人见解&lt;/em&gt;&lt;br&gt;针对中小型企业，进行一个活动策划的成本很高，一般都是模仿大型公司的活动或者发送代金券等等传统的活动，大型商场活动也局限于满就减，打几折等等屡见不鲜的名词。每一个策划活动的的成本是很高的，人力成本上需要打破传统的工作模式，活动期间需要适应新的工作流程，往往会产生很多错误。如果能将活动完全托管于第三方，公司有活动直接发起一个需求，推荐一个在预算之中，效果最好的活动策划，完成从宣传，实施，部署，到结束之后的运营总结，账目流转等多个流程都需要规范化的运作。&lt;/p&gt;
+&lt;p&gt;互联网思维是在信息公开的前提下，会引领人们对事情的规范化越来越重视。相对规范性的市场会受到深度的欢迎。各大互联网公司的成功都在实现了相对的规范，让各自的用户群获得更明确的服务。&lt;/p&gt;
+&lt;p&gt;流程化的公开将商户反馈用户的行为越来越明了，技术的先进使得能够吸引人们的策划方案越来越难，大公司直接以现金为吸引要素，铺设活动策划的线路，越来越多得活动案将难以实施。&lt;/p&gt;
+&lt;p&gt;面对难题往往也是机会的端倪，正在筹备一项互联网工作平台，有兴趣一起加入…&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.yixieshi.com/ucd/15746.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考博文&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;我没有打算去收集各大土豪们的发红包活动，心里一直在蠢蠢欲动策划一些互联网活动，可惜自己才能有限，往往没有好的计划，空空的羡慕大公司的活动。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;[关注]&lt;/strong&gt; 互联网策划公
+    
+    </summary>
+    
+      <category term="管理经验" scheme="http://wecall.github.io/categories/%E7%AE%A1%E7%90%86%E7%BB%8F%E9%AA%8C/"/>
+    
+    
+      <category term="互联网" scheme="http://wecall.github.io/tags/%E4%BA%92%E8%81%94%E7%BD%91/"/>
+    
+      <category term="公众策划" scheme="http://wecall.github.io/tags/%E5%85%AC%E4%BC%97%E7%AD%96%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MongoDB</title>
+    <link href="http://wecall.github.io/2015/01/29/MongoDB/"/>
+    <id>http://wecall.github.io/2015/01/29/MongoDB/</id>
+    <published>2015-01-29T02:20:48.000Z</published>
+    <updated>2016-01-21T04:35:26.000Z</updated>
+    
+    <content type="html">&lt;p&gt;##安装&lt;br&gt;&lt;a href=&quot;http://www.mongodb.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MongoDB官网&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.mongodb.org/display/DOCS/Tutorial&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##初体验 db shell&lt;br&gt;&lt;figure class=&quot;highlight cmd&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mongo&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;MongoDB shell version: 2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;connecting to: test&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;##基本命令&lt;br&gt;&lt;figure class=&quot;highlight cmd&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;show dbs;    `显示数据库列表`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;use dbname;  `切换/创建数据库`   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;show collections; `显示当前数据库中的集合`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;show user;    `显示用户`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.version()  `当前db版本`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.getMongo() `查看当前链接机器地址`&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;##HELP 操作&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;help&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight cmd&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;db.&lt;span class=&quot;built_in&quot;&gt;help&lt;/span&gt;()                    数据库帮助&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.mycoll.&lt;span class=&quot;built_in&quot;&gt;help&lt;/span&gt;()             集合帮助&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sh.&lt;span class=&quot;built_in&quot;&gt;help&lt;/span&gt;()                    分布式帮手&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rs.&lt;span class=&quot;built_in&quot;&gt;help&lt;/span&gt;()                    复制集帮手&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;help&lt;/span&gt; admin                   管理帮助&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;help&lt;/span&gt; connect                 连接到数据库的帮助&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;help&lt;/span&gt; keys                    快捷键&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;help&lt;/span&gt; misc                    其他需要知道的信息&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;help&lt;/span&gt; mr                      映射&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`...`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;exit&lt;/span&gt;                         退出&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;##数据库操作&lt;br&gt;&lt;figure class=&quot;highlight cmd&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//`切换/创建数据库`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;use test&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//`查看所有数据库`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;show dbs&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//`删除当前使用的数据库`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.dropDatabase()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//`从指定主机上克隆当前数据库`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.cloneDatabase()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//`将本机的mydb的数据复制到temp中`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.copyDatabase(&#39;mydb&#39;,&#39;temp&#39;,&#39;localhost&#39;) &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//`修复当前数据库`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.repairDatabase() &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//`查看当前使用的数据库`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.getName() || db  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// `当前数据库状态`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.stats()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//`当前数据库版本`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.version()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//`查看当前数据库链接地址`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.getMongo()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;##聚集集合操作&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//`创建集合`    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.createCollection(&amp;quot;collName&amp;quot;,&amp;#123;size:20,capped:5,max:100&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`获取指定名称集合`          &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.getCollection(&amp;quot;account&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`获取当前数据库所有聚集集合`    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.getCollectionNames()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`显示当前数据库的聚集索引状态`  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.printCollectionStats()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`获取集合的条数`   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.count()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`查看数据空间大小` &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.dataSize()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`当前聚集集合所在的数据库` &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.getDB()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`当前聚集集合的状态` &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.stats()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`得到聚集集合总大小` &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.totalSize()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`聚集集合储存空间大小` &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.storageSize()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`Shard版本信息`  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.getShardVersion()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`聚集集合重命名` &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.renameCollection(&amp;quot;users&amp;quot;) &amp;quot;collName&amp;quot;=&amp;gt;&amp;quot;users&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`删除当前聚集集合` &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.drop()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;##聚集集合查询操作&lt;/p&gt;
+&lt;figure class=&quot;highlight cmd&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;`查询所有记录`: 默认显示&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;条信息 使用 `it` 查询下一页&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.&lt;span class=&quot;built_in&quot;&gt;find&lt;/span&gt;()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`查询去掉某列的重复数据`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.distinct(&quot;name&quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`查询数字范围的记录`: &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.&lt;span class=&quot;built_in&quot;&gt;find&lt;/span&gt;(&amp;#123;&quot;age&quot;:&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    * &amp;#123;&quot;age&quot;:&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;&amp;#125;        &quot;=&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    * &amp;#123;&quot;age&quot;:&amp;#123;$gt:&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;&amp;#125;&amp;#125;  &quot;&amp;gt;&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    * &amp;#123;&quot;age&quot;:&amp;#123;$lt:&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;&amp;#125;&amp;#125;  &quot;&amp;lt;&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    * &amp;#123;&quot;age&quot;:&amp;#123;$gte:&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;&amp;#125;&amp;#125;  &quot;&amp;gt;=&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    * &amp;#123;&quot;age&quot;:&amp;#123;$lte:&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;&amp;#125;&amp;#125;  &quot;&amp;lt;=&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    * &amp;#123;&quot;age&quot;:&amp;#123;$gte: &lt;span class=&quot;number&quot;&gt;23&lt;/span&gt;, $lte: &lt;span class=&quot;number&quot;&gt;26&lt;/span&gt;&amp;#125;&amp;#125;  &quot;&amp;gt;=&lt;span class=&quot;number&quot;&gt;23&lt;/span&gt; &amp;amp;&amp;amp; &amp;lt;=&lt;span class=&quot;number&quot;&gt;26&lt;/span&gt;&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`查看字符范围的记录`:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.&lt;span class=&quot;built_in&quot;&gt;find&lt;/span&gt;(&amp;#123;&quot;name&quot;:/ron/&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    * &amp;#123;name:/ron/&amp;#125;   类似于 &quot;&lt;span class=&quot;variable&quot;&gt;%ron%&lt;/span&gt;&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    * &amp;#123;name:/^ron/&amp;#125;  `^` 是&lt;span class=&quot;built_in&quot;&gt;shift&lt;/span&gt;+&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; 类似于 &quot;ron%&quot; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`显示指定列数据`: &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 类似于 **select name,age from collName** `&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;: 是显示; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;是排除`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.&lt;span class=&quot;built_in&quot;&gt;find&lt;/span&gt;(&amp;#123;&amp;#125;,&amp;#123;name:&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,age:&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.&lt;span class=&quot;built_in&quot;&gt;find&lt;/span&gt;(&amp;#123;age: &amp;#123;$gt: &lt;span class=&quot;number&quot;&gt;25&lt;/span&gt;&amp;#125;&amp;#125;, &amp;#123;name: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, age: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`排序`:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+ `升序` db.collName.&lt;span class=&quot;built_in&quot;&gt;find&lt;/span&gt;().sort&amp;#123;age:&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+ `降序` db.collName.&lt;span class=&quot;built_in&quot;&gt;find&lt;/span&gt;().sort&amp;#123;age:-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`查询前&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;条信息`:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.&lt;span class=&quot;built_in&quot;&gt;find&lt;/span&gt;().limit(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`查询&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;条以后的数据`:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.&lt;span class=&quot;built_in&quot;&gt;find&lt;/span&gt;().skip(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`查询&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;之间的数据`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.&lt;span class=&quot;built_in&quot;&gt;find&lt;/span&gt;().limit(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;).skip(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`或(与)查询`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.&lt;span class=&quot;built_in&quot;&gt;find&lt;/span&gt;(&amp;#123;$or:[&amp;#123;age:&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;&amp;#125;,&amp;#123;age:&lt;span class=&quot;number&quot;&gt;25&lt;/span&gt;&amp;#125;]&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`查询一条数据`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.findOne();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`查询结果集的记录数`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.&lt;span class=&quot;built_in&quot;&gt;find&lt;/span&gt;(&amp;#123;age:&amp;#123;$gt:&lt;span class=&quot;number&quot;&gt;25&lt;/span&gt;&amp;#125;&amp;#125;&amp;#125;).count()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`按照某列进行排序`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 类似于 **SELECT COUNT(age) FROM COLLNAME**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.&lt;span class=&quot;built_in&quot;&gt;find&lt;/span&gt;(&amp;#123;age:&amp;#123;$exists:true&amp;#125;&amp;#125;).count()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;##索引操作&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;`创建索引`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.ensureIndex(&amp;#123;name:1&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.ensureIndex(&amp;#123;name:1,ts:-1&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`查看当前数据库集合索引`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.databaseName.getIndexes();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`查看当前数据库总索引大小`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.databaseName.totalIndexSize();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`读取当前集合的所有索引信息`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.reIndex()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`删除指定索引`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.dropIndex(&amp;quot;indexName&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//删除所用索引&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.dropIndexes();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;##数据操作&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;`添加`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.save(&amp;#123;name:&amp;apos;ron&amp;apos;,age:&amp;apos;25&amp;apos;,sex:true&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`修改`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 类似于: update collName set age=24 where name=&amp;apos;ron&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.update(&amp;#123;name:&amp;apos;ron&amp;apos;&amp;#125;,&amp;#123;$set:&amp;#123;age:24&amp;#125;&amp;#125;,false,true);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 类似于: update collName set age= age + 1 where name=&amp;apos;ron&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.update(&amp;#123;name:&amp;apos;ron&amp;apos;&amp;#125;,&amp;#123;$inc:&amp;#123;age:1&amp;#125;&amp;#125;,false,true);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 类似于: update collName set age = age+1 ,sex=false where name=&amp;apos;ron&amp;apos; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.update(&amp;#123;name:&amp;apos;ron&amp;apos;&amp;#125;,&amp;#123;$inc:&amp;#123;age:1&amp;#125;&amp;#125;,&amp;#123;$set:&amp;#123;sex:false&amp;#125;&amp;#125;,false,true);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`删除`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.remove(&amp;#123;age:132&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`查询修改删除` &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//update 或 remove 其中一个必选&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.findAndModify(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    query:&amp;#123;age:&amp;#123;$gte:24&amp;#125;&amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    sort:&amp;#123;age:-1&amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    update:&amp;#123;$set:&amp;#123;name:&amp;apos;ron&amp;apos;&amp;#125;,$inc:&amp;#123;age:2&amp;#125;&amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    remove:true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.runCommand(&amp;#123; findandmodify:&amp;quot;user&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    query:&amp;#123;age:&amp;#123;$gte:25&amp;#125;&amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    sort:&amp;#123;age:-1&amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    update:&amp;#123;$set:&amp;#123;name:&amp;apos;a2&amp;apos;&amp;#125;,$inc:&amp;#123;age:1&amp;#125;&amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    remove:true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;详解&lt;/th&gt;
+&lt;th&gt;默认值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;query&lt;/td&gt;
+&lt;td&gt;查询过滤条件&lt;/td&gt;
+&lt;td&gt;{}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;sort&lt;/td&gt;
+&lt;td&gt;如果多个文档符合查询过滤条件，将以该参数指定的排列方式选择出排在首位的对象，该对象将被操作&lt;/td&gt;
+&lt;td&gt;{}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;remove&lt;/td&gt;
+&lt;td&gt;若为true，被选中对象将在返回前被删除&lt;/td&gt;
+&lt;td&gt;N/A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;update&lt;/td&gt;
+&lt;td&gt;一个修改器对象&lt;/td&gt;
+&lt;td&gt;N/A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;new&lt;/td&gt;
+&lt;td&gt;若为true，将返回修改后的对象而不是原始对象。在删除操作中，该参数被忽略。&lt;/td&gt;
+&lt;td&gt;false&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;fields&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;http://docs.mongodb.org/manual/core/read-operations/#projection&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;All fields&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;upsert&lt;/td&gt;
+&lt;td&gt;创建新对象若查询结果为空。&lt;a href=&quot;https://github.com/mongodb/mongo/blob/master/jstests/find_and_modify4.js&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;示例&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;false&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;##语句操作&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 输入函数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;print(&lt;span class=&quot;string&quot;&gt;&quot;Hello world!&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 将一个对象转换成JSON&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tojson(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tojson(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 循环添加数据 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;i&amp;lt;&lt;span class=&quot;number&quot;&gt;30&lt;/span&gt;;i++)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    db.collName.save(&amp;#123;name:&lt;span class=&quot;string&quot;&gt;&#39;u_name_&#39;&lt;/span&gt;+i,age:&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;+i,sex: i % &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 游标查询&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; cursor = db.collName.find();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;(cursor.hasNext())&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    printjson(cursor.next());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;`将游标当做数组处理`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; cursor = db.collName.find();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cursor[&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// forEach 迭代循环&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;`forEach中必须传递一个函数来处理每条迭代的数据信息`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.find().forEach(printjson);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 将游标转换成数组&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;`toArray() : 转换成为数组`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; arr = db.collName.find().toArray();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;printjson(arr[&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;]); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 定制自己的查询&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.find(&amp;#123;age:&amp;#123;$lt:&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;&amp;#125;&amp;#125;,&amp;#123;age:&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&amp;#125;).forEach(printjson);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;string&quot;&gt;`只显示age列`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.find(&amp;#123;age:&amp;#123;$lt:&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;&amp;#125;&amp;#125;,&amp;#123;age:&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;&amp;#125;).forEach(printjson);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;string&quot;&gt;`排除age列`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.collName.find(&amp;#123;age:&amp;#123;$lt:&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;&amp;#125;&amp;#125;,&amp;#123;age:&lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&amp;#125;).forEach(printjson);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// forEach 传递函数显示信息&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.things.find(&amp;#123;x:&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&amp;#125;).forEach(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;x&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    print(tojson(x));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;##用户操作&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;db.createUser()     `添加用户`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.updateUser()     `更新用户`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.getUser()        `根据用户名获取用户`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db.removeUser()     `删除用户`&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##安装&lt;br&gt;&lt;a href=&quot;http://www.mongodb.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MongoDB官网&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.mongodb.org/display/DOCS/Tu
+    
+    </summary>
+    
+      <category term="技术文档" scheme="http://wecall.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/"/>
+    
+    
+      <category term="语法" scheme="http://wecall.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="mongoDB" scheme="http://wecall.github.io/tags/mongoDB/"/>
+    
+      <category term="db" scheme="http://wecall.github.io/tags/db/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Makedown</title>
+    <link href="http://wecall.github.io/2015/01/27/Makedown/"/>
+    <id>http://wecall.github.io/2015/01/27/Makedown/</id>
+    <published>2015-01-27T09:39:55.000Z</published>
+    <updated>2016-01-21T04:32:27.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Makedown是一种轻量级的标记语言，有没有让你想起HTML。那就对了，他们都是标记语言。相对于HTML,makedown的十分简单，常用的标记符号简单易记忆。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://daringfireball.net/projects/markdown/syntax&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创始人的官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://wowubuntu.com/markdown/#list&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;中文版语法说明&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;##常用语法说明&lt;/p&gt;
+&lt;p&gt;###标题&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;每篇文章的常用格式，在标题文字前加&lt;code&gt;#&lt;/code&gt;,文章会根据标题级数生成目录&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;# 一级标题&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;## 二级标题&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;### 三级标题&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;###列表&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;列表分为有序列表和无序列表，在文字添加特定符号和&lt;strong&gt;空格&lt;/strong&gt;即编程无序列表，在文字前添加数字和&lt;code&gt;.&lt;/code&gt;即编程有序列表&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;*&lt;/code&gt; &lt;code&gt;+&lt;/code&gt; &lt;code&gt;-&lt;/code&gt; 无序列表&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1.&lt;/code&gt; &lt;code&gt;2.&lt;/code&gt; &lt;code&gt;3.&lt;/code&gt; 有序列表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;###引用&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果你需要引用其他内容，就需要引用格式，只需要在文本前加&lt;code&gt;&amp;gt;&lt;/code&gt;即可。不过我一般将他展现成标题的特殊说明&lt;/p&gt;
+&lt;p&gt;引用的效果展示&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;###图片&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;插入一张图片也是非常简单的事情，&lt;code&gt;![]()&lt;/code&gt; 这样的符号轻松解决&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;!&lt;/code&gt;  标记该处是一张图片&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[]&lt;/code&gt; 该图片的标题，类似于HTML的&lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt;标签的title&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;()&lt;/code&gt; 该图片的链接地址&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;###链接&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;和图片值相差一个符号，&lt;code&gt;[]()&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;[]&lt;/code&gt; 链接的文本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;()&lt;/code&gt; 链接地址&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;###粗体与斜体&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;粗体使用两个&lt;code&gt;**&lt;/code&gt;包含一段文本，斜体使用&lt;code&gt;*&lt;/code&gt;包含一段文本&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;**加粗**&lt;/code&gt; &lt;strong&gt;加粗&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;*斜体*&lt;/code&gt; &lt;em&gt;斜体&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;###表格&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;|Table | 标题| 标题 |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;|------|-----|------|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;| col  | col | col  |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;| col  | col | col  |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;| col  | col | col  |&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Table&lt;/th&gt;
+&lt;th&gt;标题&lt;/th&gt;
+&lt;th&gt;标题&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;col&lt;/td&gt;
+&lt;td&gt;col&lt;/td&gt;
+&lt;td&gt;col&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;col&lt;/td&gt;
+&lt;td&gt;col&lt;/td&gt;
+&lt;td&gt;col&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;col&lt;/td&gt;
+&lt;td&gt;col&lt;/td&gt;
+&lt;td&gt;col&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;###代码&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我们可以优雅的使用个性化的代码框，只需要用两个&lt;em&gt;`&lt;/em&gt; 包含代码行或者使用三个&lt;em&gt;`&lt;/em&gt; 包含代码段即可&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;代码效果&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;###分割线&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用&lt;code&gt;***&lt;/code&gt; 或者 &lt;code&gt;---&lt;/code&gt; 即可在该行生成一条分割线&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;###删除线&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;~~删除效果~~&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;del&gt;删除效果&lt;/del&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Makedown是一种轻量级的标记语言，有没有让你想起HTML。那就对了，他们都是标记语言。相对于HTML,makedown的十分简单，常用的标记符号简单易记忆。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http:/
+    
+    </summary>
+    
+      <category term="技术文档" scheme="http://wecall.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/"/>
+    
+    
+      <category term="Makedown" scheme="http://wecall.github.io/tags/Makedown/"/>
+    
+      <category term="编程" scheme="http://wecall.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="语法" scheme="http://wecall.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php常用函数</title>
+    <link href="http://wecall.github.io/2015/01/12/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/"/>
+    <id>http://wecall.github.io/2015/01/12/php常用函数/</id>
+    <published>2015-01-12T07:14:25.000Z</published>
+    <updated>2016-01-21T04:30:16.000Z</updated>
+    
+    <content type="html">&lt;p&gt;##开发常用函数&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;传递任意数量的参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$args = func_get_args();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;glob() 查找文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$files = glob(&lt;span class=&quot;string&quot;&gt;&#39;*.php&#39;&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`输出`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;Array&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;] =&amp;gt; test1.php&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;] =&amp;gt; test2.php&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; $files =glob(&lt;span class=&quot;string&quot;&gt;&#39;*.&amp;#123;php,txt&amp;#125;&#39;&lt;/span&gt;,GLOB_BRACE);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; $files =glob(&lt;span class=&quot;string&quot;&gt;&#39;../images/a*.&amp;#123;php,txt,&amp;#125;&#39;&lt;/span&gt;,GLOB_BRACE);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;内存使用情况&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;memory_get_usage();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;获取CPU使用情况&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;getrusage();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;获取系统常量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;`魔法常量`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 当前行号 // 返回文件的完成路径 // 文件目录 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;__LINE__&lt;/span&gt; || &lt;span class=&quot;keyword&quot;&gt;__FILE__&lt;/span&gt;  &lt;span class=&quot;comment&quot;&gt;// __DIR__&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;|| 函数名称 || 返回类名 || 返回类的方法名|| &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;__FUNCTION__&lt;/span&gt;  || &lt;span class=&quot;keyword&quot;&gt;__CLASS__&lt;/span&gt; || __MEDTHOD__&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`魔方函数`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//实例化对象   // __删除对象   // 对象调用方法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;__construct()  || __destruct() || __call()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 读取对象属性  // 设置对象属性 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;__get()          || __set()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//打印对象    //克隆对象    &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;__toString()  || __clone()  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//对象删除部分 //对象初始化  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;__sleep() || __wakeup()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 监测对象 // 对象属性&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;__isset()  || __unset()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//实例化对象时，对应类不存在，则该方法被调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;__autoload()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;生成唯一的ID&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;uniqid(); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;uniqid(&lt;span class=&quot;string&quot;&gt;&#39;ron_&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;uniqid(&lt;span class=&quot;string&quot;&gt;&#39;ron_&#39;&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;序列化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//序列化&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;serialize();  json_encode();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//反序列化&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;unserialize();  json_decode();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;字符串压缩&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$str = &lt;span class=&quot;string&quot;&gt;&quot;ssss&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//压缩&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gzcompress($str);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//解压缩&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gzuncompress($str);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;数组相关&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$arr = &lt;span class=&quot;keyword&quot;&gt;array&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;k0&#39;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&#39;a1&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;k1&#39;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&#39;a2&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;k2&#39;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&#39;a3&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// $arr是否有&#39;b&#39;元素  true or false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;in_array(&lt;span class=&quot;string&quot;&gt;&#39;b&#39;&lt;/span&gt;,$arr); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// $arr是否有&#39;k0&#39;键值  true or false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;array_key_exists(&lt;span class=&quot;string&quot;&gt;&#39;k1&#39;&lt;/span&gt;,$arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 将数组键值组成一个新数组&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;array_keys($arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 将数组元素值组成一个数组&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;array_values($arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//返回当前数组指针指向的值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;key($arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//返回当前数组指针指向的元素值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;current($arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//返回当前数组指针指向元素的键,值组成的数组,并将指针指向下一位&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;each($arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//将数组指向下一位,再返回移动后的元素值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;next($arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//将数组指向下一位,再返回移动后的元素值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;prev($arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//将数组重置指向第一个元素并返回该元素&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;reset($arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//讲数组指针重置指向最后以为元素,并返回最后一个元素值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end($arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//按照数组元素值的Ascii码从小到大排序,索引从0计&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sort($arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//按照数组元素值的Ascii码从大到小排序,索引从0计&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rsort($arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//将第一个参数以后的参数追加到数组之后,返回数组长度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;array_push($arr,&lt;span class=&quot;string&quot;&gt;&quot;dd&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;aa&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//将第一个参数以后的参数追加到数组开头处,返回数组长度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;array_unshift($arr,&lt;span class=&quot;string&quot;&gt;&quot;t1&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;t2&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//提取最后一个元素值,并将其从数组中剔除&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;array_pop($arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//提取数组头一个元素值，并把头一个元素从原数组中剔除&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;array_shift($arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//让第一个参数数组达到第二个参数数值长度,将第三个参数作为元素添加到第一个参数数组的末尾,索引从最小的没用过的数值开始计&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;array_pad($arr,&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;t1&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//去除数组中多余重复的元素&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;array_unique($arr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//计算数组中所有数值型元素值的和&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$int=array_sum($arr);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;字符串相关&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//将数组字符用&quot;-&quot;连接成字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$str = implode(&lt;span class=&quot;string&quot;&gt;&quot;-&quot;&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;array&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;a&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;b&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;c&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//字符串分割,用第一个参数里的字符分割第二个参数的字符串，最后一个参数限制返回数组长度，可不限制，则一直分割下去&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$str = explode(&lt;span class=&quot;string&quot;&gt;&quot;a&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;aaadedeadfa asdefeadeafr&quot;&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//返回括号里字符串的字符全部大写的字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$str = strtoupper(&lt;span class=&quot;string&quot;&gt;&quot;sdaf&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//将括号里第一个字符串变成大写后返回&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$str=ucfirst(&lt;span class=&quot;string&quot;&gt;&quot;asdf&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//用echo等将括号里字符串打印在网页上时原汁原味打印出括号里的字符串，包括标签字符&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$str=htmlentities(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br/&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//返回第二个参数字符串在第一个字符串里出现的次数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$int=substr_count(&lt;span class=&quot;string&quot;&gt;&quot;abcdeabcdeablkabd&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;ab&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//返回第二个字符串在第一个字符串第一次出现的位置，第一个字符位置算0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$int=strpos(&lt;span class=&quot;string&quot;&gt;&quot;asagaab&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;ab&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//返回第二个字符串在第一个字符串最后一次出现的位置，第一个字符位置算0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$int=strrpos(&lt;span class=&quot;string&quot;&gt;&quot;asagaabadfab&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;ab&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//将参数二中每一个字符匹配参数一中的字符,匹配成功之后参数一字符前加&quot;\&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$str=addcslashes(&lt;span class=&quot;string&quot;&gt;&quot;abcdefghijklmn&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;akd&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//依次比较两字符串对应字符阿斯克码值，第一对不一样的，如果参数一里大于参数二里的返回1,反之返回-1，两字符串完全一样返回0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$int=strcmp(&lt;span class=&quot;string&quot;&gt;&quot;b&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;a&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//将参数一的字符串填充到参数二指定的长度（单字符个数），参数三为指定填充的字符串，不写默认空格参数四填充位置，0在参数一左侧开头填充，1右侧开头，2两边开头同时。不写默认在右侧开头填充&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$str=str_pad(&lt;span class=&quot;string&quot;&gt;&quot;abcdefgh&quot;&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;at&quot;&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//返回第一个参数格式化后的数字格式，第二个参数为保留几个小数，参数三为将小数点换成参数三，参数四为整数部分每三位用什么字符分割后面三个参数都不写，则默认去掉小数部分，整数每隔三位用逗号,分割。参数三，参数四必须同时存在&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$str=number_format(&lt;span class=&quot;number&quot;&gt;1231233.1415&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;d&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;a&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##开发常用函数&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;传递任意数量的参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;s
+    
+    </summary>
+    
+      <category term="技术文档" scheme="http://wecall.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/"/>
+    
+    
+      <category term="开发" scheme="http://wecall.github.io/tags/%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="php" scheme="http://wecall.github.io/tags/php/"/>
+    
+      <category term="函数" scheme="http://wecall.github.io/tags/%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP编码规范</title>
+    <link href="http://wecall.github.io/2015/01/09/PHP%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/"/>
+    <id>http://wecall.github.io/2015/01/09/PHP编码规范/</id>
+    <published>2015-01-09T09:19:50.000Z</published>
+    <updated>2016-01-21T04:30:14.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;规范的代码在团队合作中尤其重要，很多开发人员不愿意看别人的代码，是因为种种管理规范的人员工作没有做好，最后都施加到了程序员身上去解决面对这些窘境。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;目前毕竟浏览的软件项目质量管理的软件【sonar】,里面规范了各种语言代码应该遵循的规范，个人感觉身为团队的一员，有必要在这方面提升一下自己的编程素质。&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;类的大括号在后面不是另起一行; eg： class user{&lt;/li&gt;
+&lt;li&gt;变量名首字母小写,采用驼峰模式(小驼峰法); eg: userAge [a-z][a-zA-Z0-9]*&lt;/li&gt;
+&lt;li&gt;类文件名只允许字母,首字母大写(大驼峰法); &lt;/li&gt;
+&lt;li&gt;注释要另起一行,不要跟在代码后面;&lt;/li&gt;
+&lt;li&gt;移除已经注释的代码片段;&lt;/li&gt;
+&lt;li&gt;switch至少包含3个case,否则使用if;&lt;/li&gt;
+&lt;li&gt;switch要加 default;&lt;/li&gt;
+&lt;li&gt;if等嵌套不能超过3次;&lt;/li&gt;
+&lt;li&gt;类中的方法不能超过20个,否则考虑拆分;&lt;/li&gt;
+&lt;li&gt;移除没用的参数;&lt;/li&gt;
+&lt;li&gt;移除没用的变量;&lt;/li&gt;
+&lt;li&gt;if必须要跟else;&lt;/li&gt;
+&lt;li&gt;if总是跟着大括号;&lt;/li&gt;
+&lt;li&gt;代码中不要有太多的return;&lt;/li&gt;
+&lt;li&gt;每行结尾不允许有多余的空格;&lt;/li&gt;
+&lt;li&gt;每行代码长度控制在80个字符以内,最长不要超过120个字符;&lt;/li&gt;
+&lt;li&gt;使用4个空格作为缩进，而不使用tab缩进,编辑器最好事先设定;&lt;/li&gt;
+&lt;li&gt;函数中用逗号来分隔参数，所有的参数与前面的逗号之间要空格(第一个参数除外);&lt;/li&gt;
+&lt;li&gt;除了参数之间要使用空格外，所有操作符之间都要使用空格，包括字符连接符(.);&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (condition) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;false&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//或者&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(a==b)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;false&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//`应该写成`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; condition;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; a==b;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//`直接返回`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;compute_duration_in_milliseconds&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  $duration = ((($hours * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt;) + $minutes) * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt; + $seconds ) * &lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt; ;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; $duration;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//Compliant Solution&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;compute_duration_in_milliseconds&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ((($hours * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt;) + $minutes) * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt; + $seconds ) * &lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//`出现重复参数`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;// Non-Compliant - &#39;action1&#39; is duplicated 3 times&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  prepare(&lt;span class=&quot;string&quot;&gt;&#39;action1&#39;&lt;/span&gt;);       &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  execute(&lt;span class=&quot;string&quot;&gt;&#39;action1&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  release(&lt;span class=&quot;string&quot;&gt;&#39;action1&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//`正确的做法`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ACTION_1 = &lt;span class=&quot;string&quot;&gt;&#39;action1&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  prepare(ACTION_1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  execute(ACTION_1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  release(ACTION_1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//布尔值直接判断&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ($booleanVariable == &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;) &amp;#123; &lt;span class=&quot;comment&quot;&gt;/* ... */&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ($booleanVariable != &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;) &amp;#123; &lt;span class=&quot;comment&quot;&gt;/* ... */&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ($booleanVariable || &lt;span class=&quot;keyword&quot;&gt;false&lt;/span&gt;) &amp;#123; &lt;span class=&quot;comment&quot;&gt;/* ... */&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;doSomething(!&lt;span class=&quot;keyword&quot;&gt;false&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Compliant Solution&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ($booleanVariable) &amp;#123; &lt;span class=&quot;comment&quot;&gt;/* ... */&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!$booleanVariable) &amp;#123; &lt;span class=&quot;comment&quot;&gt;/* ... */&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ($booleanVariable) &amp;#123; &lt;span class=&quot;comment&quot;&gt;/* ... */&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;doSomething(&lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;千万别认为我是处女座的,在此公开一下自己的星座 &lt;code&gt;摩羯座&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;规范的代码在团队合作中尤其重要，很多开发人员不愿意看别人的代码，是因为种种管理规范的人员工作没有做好，最后都施加到了程序员身上去解决面对这些窘境。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;目前毕竟浏览的软件项目质量管理的软件【sonar】,里面规
+    
+    </summary>
+    
+      <category term="技术文档" scheme="http://wecall.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/"/>
+    
+    
+      <category term="规范" scheme="http://wecall.github.io/tags/%E8%A7%84%E8%8C%83/"/>
+    
+      <category term="php" scheme="http://wecall.github.io/tags/php/"/>
+    
+      <category term="代码" scheme="http://wecall.github.io/tags/%E4%BB%A3%E7%A0%81/"/>
+    
+      <category term="摩羯座" scheme="http://wecall.github.io/tags/%E6%91%A9%E7%BE%AF%E5%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zencode</title>
+    <link href="http://wecall.github.io/2015/01/07/zencode/"/>
+    <id>http://wecall.github.io/2015/01/07/zencode/</id>
+    <published>2015-01-07T02:57:45.000Z</published>
+    <updated>2016-01-21T04:30:12.000Z</updated>
+    
+    <content type="html">&lt;p&gt;#常用语法&lt;br&gt;程序员高效的工作少不了工具的帮助,特此为大家整理一个系列的工具篇&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;说明用途:使用元素的名称生成Html标签; eg: div -&amp;gt; &lt;div&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;准备工作,搜索一下自己的浏览器是否支持Emmet插件; eg: sublime text  Emmet&lt;/li&gt;
+&lt;li&gt;查看文档,熟悉zencode的语法; eg: &lt;a href=&quot;http://docs.emmet.io/abbreviations/syntax/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;emmet官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;操作方式,输入语句,按一下生成的快捷键,各个编辑器略有不同; eg:  !  [Ctrl+E]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;让我们一起来感受一下它的神奇之处&lt;/code&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&quot;结构篇&quot;&gt;&lt;a href=&quot;#结构篇&quot; class=&quot;headerlink&quot; title=&quot;结构篇&quot;&gt;&lt;/a&gt;结构篇&lt;/h4&gt;&lt;p&gt;&lt;code&gt;(html:5 html:xml )&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;!&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;meta&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;lang&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;en&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;head&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;meta&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;charset&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;Document&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;head&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;body&lt;/span&gt;&amp;gt;&lt;/span&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;body&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;html&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;属性篇&quot;&gt;&lt;a href=&quot;#属性篇&quot; class=&quot;headerlink&quot; title=&quot;属性篇&quot;&gt;&lt;/a&gt;属性篇&lt;/h4&gt;&lt;p&gt;&lt;code&gt;(. class ; # id ; {} text ; [] 其他属性)&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;div.col#row&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;col&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;row&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;p&amp;#123;记住这种用法,编码神器&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;记住这种用法,编码神器&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;a.col[title=&quot;快&quot;]&amp;#123;Html tag&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;a 的href属性会自动生成;&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;col&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;title&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;快&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;Html tag&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h4 id=&quot;符号篇&quot;&gt;&lt;a href=&quot;#符号篇&quot; class=&quot;headerlink&quot; title=&quot;符号篇&quot;&gt;&lt;/a&gt;符号篇&lt;/h4&gt;&lt;p&gt;&lt;code&gt;(&amp;gt; + ^ *)&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;div+div&amp;gt;ul&amp;gt;li&amp;gt;span+a.col&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;       &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;col&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;^^ 当前元素的父元素的父元素&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;div&amp;gt;ul&amp;gt;li&amp;gt;span^^ul&amp;gt;li&amp;gt;a&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;       &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;       &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;*5 5个类似的元素 $ 默认重1开始,自增参数&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;div&amp;gt;ul&amp;gt;li.item$*5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;       &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;       &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ul&amp;gt;li.item$$$*5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;item001&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;item002&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;item003&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;item004&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;item005&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#常用语法&lt;br&gt;程序员高效的工作少不了工具的帮助,特此为大家整理一个系列的工具篇&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;说明用途:使用元素的名称生成Html标签; eg: div -&amp;gt; &lt;div&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;准备工作,搜索一下自己的
+    
+    </summary>
+    
+      <category term="技术文档" scheme="http://wecall.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/"/>
+    
+    
+      <category term="编程" scheme="http://wecall.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="语法" scheme="http://wecall.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="zencode" scheme="http://wecall.github.io/tags/zencode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js开发指南</title>
+    <link href="http://wecall.github.io/2014/12/31/Node-js%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/"/>
+    <id>http://wecall.github.io/2014/12/31/Node-js开发指南/</id>
+    <published>2014-12-31T06:52:02.000Z</published>
+    <updated>2016-01-21T04:30:18.000Z</updated>
+    
+    <content type="html">&lt;p&gt;##了解Node.js&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;具有复杂逻辑的网站&lt;/li&gt;
+&lt;li&gt;社交网络的大规模Web应用&lt;/li&gt;
+&lt;li&gt;Web Socket服务器&lt;/li&gt;
+&lt;li&gt;命令行工具&lt;/li&gt;
+&lt;li&gt;交互式终端程序&lt;/li&gt;
+&lt;li&gt;单元测试工具&lt;/li&gt;
+&lt;li&gt;客户端Javascript编译器&lt;/li&gt;
+&lt;li&gt;带有图形用户界面的本地应用程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;##Node.js初体验&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I/O密集型项目&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://nodejs.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nodejs官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;程序实例:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; http = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;http&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;http.createServer(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;req,res&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    res.writeHead(&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;,&amp;#123;&lt;span class=&quot;string&quot;&gt;&#39;Content-Type&#39;&lt;/span&gt;:&lt;span class=&quot;string&quot;&gt;&#39;text/html&#39;&lt;/span&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    res.write(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;h1&amp;gt;Ron Chen&amp;lt;/h1&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    res.write(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;p&amp;gt;tech only&amp;lt;/p&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;).listen(&lt;span class=&quot;number&quot;&gt;3000&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;string&quot;&gt;&quot;HTTP Server is listening at port 3000 .&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;##学习日记&lt;/p&gt;
+&lt;p&gt;###异步式I/O与事件式编程&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;阻塞&lt;/code&gt; 线程无法及时调度,一般发生于同步式的I/O操作，例如磁盘读写,网络通信&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;同步式I/O(阻塞式)&lt;/th&gt;
+&lt;th&gt;异步式I/O(非阻塞式)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;利用多线程提升吞吐量&lt;/td&gt;
+&lt;td&gt;单线程即可实现高吞吐量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;通过事件分割和线程调度利用多核CPU&lt;/td&gt;
+&lt;td&gt;通过功能划分利用多核CPU&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;需要由操作系统调度多线程使用多核CPU&lt;/td&gt;
+&lt;td&gt;可以将单进程绑定到单核CPU&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;难以充分利用CPU资源&lt;/td&gt;
+&lt;td&gt;可以充分利用CPU资源&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;内存轨迹大,数据局部性弱&lt;/td&gt;
+&lt;td&gt;内存轨迹小,数据局部性强&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;符合线性编程思维&lt;/td&gt;
+&lt;td&gt;不符合传统的编程思想&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;p&gt;###事件循环&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Node.js程序由事件循环开始，到事件循环结束,所有的逻辑都是事件的回调函数。它没有显式的事件循环，事件循环通过Libev库实现，对开发者不可见,均被EventEmitter封装。&lt;br&gt;libev事件循环的每一次迭代,在Node.js中就是一次Tick,libev不断检查是否有活动的、可供检测的事件监听器，直到检测不到时才退出循环,进程结束。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://ronchen.qiniudn.com/ronchenQQ截图20150113094124.png&quot; alt=&quot;事件循环&quot; title=&quot;事件循环&quot;&gt;&lt;/p&gt;
+&lt;p&gt;###模块和包&lt;br&gt;包:实现某个功能模块的集合,用户发布和维护。&lt;br&gt;模块：node.js应用程序的组成部分,文件和模块是一一对应的。&lt;/p&gt;
+&lt;p&gt;####模块&lt;br&gt;exports: 模块公开的接口&lt;br&gt;require: 外部获取一个模块的接口,所获取模块的exports对象&lt;br&gt;&lt;code&gt;注意:&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;require 类似于创建对象,但是实际上和对象又有本质的区别,因为require不会重复加载模块,也就是说,无论调用多少次require,获得的模块都是同一个;&lt;br&gt;exports 本身仅仅是一个普通的空对象,专门用来声明接口,本质上是通过它为模块闭包的内部建立一个有限的访问接口;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;####包&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;package.json必须在包的顶层目录下;&lt;/li&gt;
+&lt;li&gt;二进制文件应该在bin目录下;&lt;/li&gt;
+&lt;li&gt;Javascript代码应该在lib目录下;&lt;/li&gt;
+&lt;li&gt;文档应该在doc目录下;&lt;/li&gt;
+&lt;li&gt;单元测试应该在test目录下;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;package.json说明:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;name: 包的名称,必须是唯一的,小写英文字母+下划线+数字,不允许有空格&lt;/li&gt;
+&lt;li&gt;description: 简要说明&lt;/li&gt;
+&lt;li&gt;version: 版本字符串,符合语义化规范&lt;/li&gt;
+&lt;li&gt;keywords:关键字数组,便于搜索&lt;/li&gt;
+&lt;li&gt;maintainers:维护者数组，{name,email&lt;code&gt;可选&lt;/code&gt;,web&lt;code&gt;可选&lt;/code&gt;}&lt;/li&gt;
+&lt;li&gt;contributors:贡献者数组,同上&lt;/li&gt;
+&lt;li&gt;bugs:提交Bug的地址&lt;/li&gt;
+&lt;li&gt;licenses:许可证数组,{type[许可证名称],url[链接地址]}&lt;/li&gt;
+&lt;li&gt;repositories:仓库托管地址数组,{type[仓库类型],url[仓库地址],path[仓库路径]}&lt;/li&gt;
+&lt;li&gt;dependencies:包的依赖数组{[包的名称],[包的版本号]}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Node.js官方提供的包管理器,标准发布平台&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//本地模式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm [install/i] package_name &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//全局模式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm [install/i] -g package_name&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;####包的发布&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//生成规范的package.json&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm init&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//发布  [包管理]https://www.npmjs.com/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm publish&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//取消发布&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm unpublish&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;###node.js调试&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//打开调试终端&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;node debug debug.js&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;run &lt;code&gt;执行脚本,在第一行暂停&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;restart &lt;code&gt;重新执行脚本&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;cont,c  &lt;code&gt;继续执行,直到遇到下一个断点&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;next,n  &lt;code&gt;单步执行&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;step,s  &lt;code&gt;单步执行并进入函数&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;out,o   &lt;code&gt;从函数中步出&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;setBreakpoint(),sb() &lt;code&gt;当前行设置断点&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;setBreakpoint(‘f{}’),sb(…) &lt;code&gt;在函数f第一行设置断点&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;setBreakpoint(‘script.js’,20),sb(…) &lt;code&gt;在script.js的第一行设置断点&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;clearBreakpoint(),cb(…) &lt;code&gt;清除所有断点&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;backtrace,bt &lt;code&gt;显示当前调用栈&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;list(5)  &lt;code&gt;显示当前执行到的前后5行代码&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;watch(expr) &lt;code&gt;把表达式expr加入监视列表&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;unwatch(expr) &lt;code&gt;把表达式expr从监视列表移除&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;watchers  &lt;code&gt;显示监视列表中所有的表达式和值&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;repl  &lt;code&gt;在当前上下文打开即时求值环境&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;kill  &lt;code&gt;终止当前执行的脚本&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;scripts &lt;code&gt;显示当前已加载的所有脚本&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;version &lt;code&gt;显示V8的版本&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;###核心模块&lt;/p&gt;
+&lt;p&gt;####全局变量&lt;br&gt;global 是全局变量的宿主,定义变量使用var 区别于全局变量.&lt;/p&gt;
+&lt;p&gt;process是一个全局变量,即Global对象属性.最常用的成员方法:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;process.argv 命令行参数数组&lt;/li&gt;
+&lt;li&gt;process.stdout 标准输出流,通常使用&lt;code&gt;console.log&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;process.stdin 标准输入流&lt;/li&gt;
+&lt;li&gt;process.nextTick 为事件循环设置一项任务,在下次事件循环调响应时调用callback.不用使用setTimeout(fn,0)代替process.nextTick(callback)&lt;br&gt;console 控制台标准输出&lt;ul&gt;
+&lt;li&gt;console.log() 类似于C语言printf()，多个参数输出，以换行结束&lt;/li&gt;
+&lt;li&gt;console.error() 错误流输出,类似于console.log()&lt;/li&gt;
+&lt;li&gt;console.trace() 输出当前调用栈&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;####常用工具util&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;util.inherits(constructor,superConstructor)对象间原型继承函数&lt;/li&gt;
+&lt;li&gt;util.inspect(object,[showHidden],[depth],[colors]) 将任意对象转换成为字符串&lt;/li&gt;
+&lt;li&gt;util.isArray() , util.isRegExp() , util.isDate()&lt;/li&gt;
+&lt;li&gt;util.isError() , util.format() , util.debug()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;####事件驱动&lt;br&gt;events是Node.js最重要的模块，Node.js本身架构就是事件式的,而他提供了唯一的接口,堪称Node.js的基石&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;events.EventEmitter 事件发射与事件监听器功能的封装;&lt;/li&gt;
+&lt;li&gt;EventEmitter.on(event,listener) 为指定事件注册一个监听器;&lt;ul&gt;
+&lt;li&gt;event:一个字符串;listener:回调函数;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;EventEmitter.emit(event,[arg1],[arg2]…) 发射event事件;&lt;ul&gt;
+&lt;li&gt;传递可选参数到事件监听器的参数表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;EventEmitter.once(event,listener) 为指定事件注册一个单次监听器;&lt;/li&gt;
+&lt;li&gt;EventEmitter.removeListener(event,listener) 移除指定事件的某个监听器;&lt;ul&gt;
+&lt;li&gt;listener:必须是该事件已经注册过的监听器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;EventEmitter.removeAllListener([event]) 移除所有事件的所有监听器;&lt;ul&gt;
+&lt;li&gt;如果event,则移除指定事件的所有监听器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;更多API参考:&lt;a href=&quot;http://nodejs.org/api/events.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;API文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;code&gt;error事件&lt;/code&gt;当我们遇到异常的时候通常会发射error事件,当error被发射时,EventEmitter规定如果没有响应的监听器,Node.js会把它当作异常,退出并打印调用栈.&lt;/p&gt;
+&lt;p&gt;####继承EventEmitter&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;只要是支持事件响应的核心模块都是EventEmitter的子类：fs,net,http&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;#####文件系统 fs&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;fs模块是文件操作的封装,提供了文件的读取,写入,更名,删除,遍历目录,链接等POSIX文件系统操作.&lt;br&gt;fs模块中的所有操作都提供了异步的和同步的两个版本.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;列出常用的函数:&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fs.readFile:&lt;ul&gt;
+&lt;li&gt;调用方法:fs.readFile(filename,[encoding],[callback(err,data)])&lt;/li&gt;
+&lt;li&gt;参数说明:&lt;ul&gt;
+&lt;li&gt;filename:[必选] 读取的文件名&lt;/li&gt;
+&lt;li&gt;encoding:[可选] 文件的字符编码&lt;/li&gt;
+&lt;li&gt;callback:[可选] 回调函数,接收文件内容&lt;ul&gt;
+&lt;li&gt;err : 有没有错误发生&lt;/li&gt;
+&lt;li&gt;data:文件内容[如果指明encoding,data是一个字符串]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;异步函数&lt;/th&gt;
+&lt;th&gt;同步函数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;打开文件&lt;/td&gt;
+&lt;td&gt;fs.open(path,flags,[mode],[callback(err,fd)])&lt;/td&gt;
+&lt;td&gt;fs.openSync(path,flags,[mode])&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;关闭文件&lt;/td&gt;
+&lt;td&gt;fs.close(fd,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.closeSync(fd)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;读取文件(文件扫描符)&lt;/td&gt;
+&lt;td&gt;fs.read(fd,buffer,offset,length,position,[callback(err,bytesRead,buffer)])&lt;/td&gt;
+&lt;td&gt;fs.readSync(fd,buffer,offset,length,position)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;写入文件(文件扫描符)&lt;/td&gt;
+&lt;td&gt;fs.write(fd,buffer,offset,length,position,[callback(err,bytesWritten,buffer)])&lt;/td&gt;
+&lt;td&gt;fs.writeSync(fd,buffer,offset,lenght,position)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;读取文件内容&lt;/td&gt;
+&lt;td&gt;fs.readfile(filename,[encoding],[callback(err,data)])&lt;/td&gt;
+&lt;td&gt;fs.readFileSync(filename,[encoding])&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;写入文件内容&lt;/td&gt;
+&lt;td&gt;fs.writeFile(filename,data,[encoding],[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.writeFileSync(filename,data,[encoding])&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;删除文件&lt;/td&gt;
+&lt;td&gt;fs.unlink(path,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.unlinkSync(path)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;创建目录&lt;/td&gt;
+&lt;td&gt;fs.mkdir(path,[mode],[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.mkdirSync(path,[mode])&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;删除目录&lt;/td&gt;
+&lt;td&gt;fs.rmdir(path,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.rmdirSync(path)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;读取目录&lt;/td&gt;
+&lt;td&gt;fs.readdir(path,[callback(err,files)])&lt;/td&gt;
+&lt;td&gt;fs.readdirSync(path)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;获取真实路径&lt;/td&gt;
+&lt;td&gt;fs.readpath(path,[callback(err,resolvePath)])&lt;/td&gt;
+&lt;td&gt;fs.readpathSync(path)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;更名&lt;/td&gt;
+&lt;td&gt;fs.rename(path1,path2,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.renameSync(path1,path2)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;截断&lt;/td&gt;
+&lt;td&gt;fs.truncate(fd,len,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.truncate(fd,len)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;更改所有权&lt;/td&gt;
+&lt;td&gt;fs.chown(path,uid,gid,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.chownSync(path,uid,gid)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;更改所有权(文件扫描符)&lt;/td&gt;
+&lt;td&gt;fs.fchown(fd,uid,gid,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.fchownSync(fd,uid,gid)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;更改所有权(不解析符号链接)&lt;/td&gt;
+&lt;td&gt;fs.lchown(path,uid,gid,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.lchownSync(path,uid,gid)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;更改权限&lt;/td&gt;
+&lt;td&gt;fs.chmod(path,mode,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.chmodSync(path,mode)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;更改权限(文件扫描符)&lt;/td&gt;
+&lt;td&gt;fs.fchmod(path,mode,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.fchmodSync(path,mode)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;更改权限(不解析符号链接)&lt;/td&gt;
+&lt;td&gt;fs.lchmod(path,mode,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.lchmodSync(path,mode)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;获取文件信息&lt;/td&gt;
+&lt;td&gt;fs.stat(path,[callback(err,stats)])&lt;/td&gt;
+&lt;td&gt;fs.statSync(path)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;获取文件信息(文件扫描符)&lt;/td&gt;
+&lt;td&gt;fs.fstat(fd,[callback(err,stats)])&lt;/td&gt;
+&lt;td&gt;fs.fstatSync(fd)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;获取文件信息(不解析符号链接)&lt;/td&gt;
+&lt;td&gt;fs.lstat(path,[callback(err,stats)])&lt;/td&gt;
+&lt;td&gt;fs.lstatSync(path)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;创建硬链接&lt;/td&gt;
+&lt;td&gt;fs.link(srcpath,dstpath,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.linkSync(srcpath.dstpath)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;创建符号链接&lt;/td&gt;
+&lt;td&gt;fs.symlink(linkdata,path,[type],[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.symlinkSync(linkdata,path,[type])&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;读取链接&lt;/td&gt;
+&lt;td&gt;fs.readlink(path,[callback(err,linkstring)])&lt;/td&gt;
+&lt;td&gt;fs.readlinkSync(path)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;修改文件时间戳&lt;/td&gt;
+&lt;td&gt;fs.utimes(path,atime,mtime,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.utimesSync(path,atime,mtime)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;修改文件时间戳(文件扫描符)&lt;/td&gt;
+&lt;td&gt;fs.futimes(fd,atime,mtime,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.futimesSync(fd,atime,mtime)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;同步磁盘缓存&lt;/td&gt;
+&lt;td&gt;fs.fsync(fd,[callback(err)])&lt;/td&gt;
+&lt;td&gt;fs.fsyncSync(fd)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;p&gt;#####HTTP服务器与客户端&lt;br&gt;http模块封装了一个高效的HTTP服务器和一个简易的HTTP客户端.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;服务器常用函数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;http.server&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;request: 当客户端请求到来时,该事件被触发;&lt;/li&gt;
+&lt;li&gt;connection: 当TCP连接建立时,该事件被触发,提供一个参数socket,为net.Socket的实例;&lt;/li&gt;
+&lt;li&gt;close:当服务器关闭时,该事件被触发;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;http.ServerRequest  HTTP请求的信息,HTTP请求一般分为:请求头(Request Header)和请求体(Request Body)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;data: 当请求数据到来时,该事件被触发;&lt;/li&gt;
+&lt;li&gt;end: 当请求体数据传输完成时,该事件被触发,此后将不会再有数据到来;&lt;/li&gt;
+&lt;li&gt;close:用户当前请求结束时,该事件被触发;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;http.ServerResponse 返回给客户端的信息&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;response.writeHead(statusCode,[headers]): 请求响应头&lt;ul&gt;
+&lt;li&gt;statusCode: HTTP的状态码&lt;/li&gt;
+&lt;li&gt;headers:数组对象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;response.write(data,[encoding]): 向请求的客户端发送响应内容&lt;ul&gt;
+&lt;li&gt;data:一个Buffer或者字符串&lt;/li&gt;
+&lt;li&gt;encoding:编码方式,默认 utf-8&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;response.end([data],[endcoding]): 结束响应,告诉客户端所有发送已经完成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;客户端常用函数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;http.request(options,callback)  发起请求,返回一个http.ClientRequest实例&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;options:  参数的关联数组&lt;ul&gt;
+&lt;li&gt;host: 网站域名或者IP地址&lt;/li&gt;
+&lt;li&gt;port：网站端口&lt;/li&gt;
+&lt;li&gt;method: 请求方法,默认是GET&lt;/li&gt;
+&lt;li&gt;path: 请求相对根的目录,默认是”/“&lt;/li&gt;
+&lt;li&gt;headers: 一个关联数组对象,请求头的内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;callback: 传递Http.ClientResponse参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;http.get(options,callback) 更加简洁的办法处理GET请求&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; http = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;http&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;http.get(&amp;#123;host:&lt;span class=&quot;string&quot;&gt;&quot;www.chenrongrong.com&quot;&lt;/span&gt;&amp;#125;,&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;res&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    res.setEncoding(&lt;span class=&quot;string&quot;&gt;&#39;utf-8&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    res.on(&lt;span class=&quot;string&quot;&gt;&#39;data&#39;&lt;/span&gt;,&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;data&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(data);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;http.ClientRequest 表示一个已经产生而且正在进行中的HTTP请求&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;request.abort() 终止正在发送的请求&lt;/li&gt;
+&lt;li&gt;request.setTimeout(timeout,[callback]) 设置请求超时时间,timeout为毫秒数,请求超时之后,callback()将会被调用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;http.clientResponse 表示请求结果状态&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;response.setEncoding([encoding]) : 设置默认编码&lt;/li&gt;
+&lt;li&gt;response.pause() : 暂停接收数据和发送事件,方便下载功能&lt;/li&gt;
+&lt;li&gt;response.resume() : 从暂停的状态中恢复&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;statuscode&lt;/td&gt;
+&lt;td&gt;HTTP状态码,如200,404,500&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;httpVersion&lt;/td&gt;
+&lt;td&gt;HTTP协议版本,通常是1.0 or 1.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;headers&lt;/td&gt;
+&lt;td&gt;HTTP请求头&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;trailers&lt;/td&gt;
+&lt;td&gt;HTTP请求尾(不常见)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##了解Node.js&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;具有复杂逻辑的网站&lt;/li&gt;
+&lt;li&gt;社交网络的大规模Web应用&lt;/li&gt;
+&lt;li&gt;Web Socket服务器&lt;/li&gt;
+&lt;li&gt;命令行工具&lt;/li&gt;
+&lt;li&gt;交互式终端程序&lt;/li&gt;
+&lt;li&gt;单元测试工具&lt;/li&gt;
+&lt;li
+    
+    </summary>
+    
+      <category term="技术文档" scheme="http://wecall.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/"/>
+    
+    
+      <category term="node.js" scheme="http://wecall.github.io/tags/node-js/"/>
+    
+      <category term="开发" scheme="http://wecall.github.io/tags/%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="语言" scheme="http://wecall.github.io/tags/%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="技术" scheme="http://wecall.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>烛之泪</title>
+    <link href="http://wecall.github.io/2014/12/17/%E7%83%9B%E4%B9%8B%E6%B3%AA/"/>
+    <id>http://wecall.github.io/2014/12/17/烛之泪/</id>
+    <published>2014-12-17T03:42:18.000Z</published>
+    <updated>2016-01-21T04:42:12.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;当烛光渐渐微弱，周围都将消失不见，余下的只有回忆！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;晚上看到一篇文章，写的是程序员为什么喜欢夜间工作。脑海中勾勒了一副画面，时至深夜，周围寂静，明亮的屏幕面前奏击着键盘。加上一些轻柔你的音乐，多少个夜晚你是这样度过。烛光渐渐微弱，黑夜渐渐深入，留下的就是没有一丝打扰，他有明确的思路，有前进的方向，为什么不选择一股作气的做下去呢？&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;做了这么长时间的开发工作，对这个行业有了大致的了解，一心想自己搞点什么，曾经熬过的深夜，没有回忆起自己到底做了什么。曾经想法那么多，可能是做的事情还没有达到自己预想的效果。渐渐的感觉不到自己有信心把它变为现实，仍然停留在创意阶段。细细想来也有不少自己感觉不错的想法，想到的时候，可能当晚就想做出来，哪怕是不睡觉，感觉就是斗志昂扬！感觉那时候的自己就是超级撒亚人，就像进入仙人模式的鸣人，可以抵御一切难题！现实没有办法收集查克拉，没有能力去收集七龙珠，好再我选好自己的方向，坚持下去是我从这些动漫作品得出的唯一精神，只要还有一丝希望就要不断尝试，哪怕心里的祈祷被拒绝36次，就在最后一次，得到了你就成功了。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;明天针对公司来说是一个展现公司实力的机会，今天晚上团队留下来为其做最后的奠基工作，明天将有一个很好的推广活动。团队合作的氛围，使得大家很轻松，多个项目一起上线的压力宕然无存，通过细节的衡量，我们完美的完成任务，顺利的上线之后的微调，到最后也都没有那么大的改动，总之很开心的下班了。&lt;/p&gt;
+&lt;p&gt;打的到家已经00:22了，结果老婆大人睡觉了。那么，悲剧的事情来了，没有钥匙；第一反应就是打电话，打到5个的时候，感觉到事情不好了，她应该刚刚睡着，没有那么快醒过来，在窗户外面看着家里的灯亮着，2楼的门和楼下的来回徘徊着，心里祈祷着她能尽快从睡梦中醒来，一有空就继续拨打电话，你所拨打的电话暂时无法接听，请稍后再拨，这个时候已经达到16个了，这个时候脑子里浮现了一个想法，会不会到26个就会醒呢。继续徘徊到楼下，用硬币砸窗户会不会惊醒，侥幸之中，我从包里找到了一本书，先扔上去再说，现实是没有成功；再来两个硬币，第一个没有砸到，掉落到楼下的花丛中，第二个清脆的砸到了玻璃门，楼下的自己感觉到声音是如此的尖锐，应该能醒了吧。哎，现实继续打电话，真的达到了26个，越是能强烈的感觉到她就要醒了。现实就是这么铁血， 这时候想象一下，会不会有可能从一楼的窗户爬上去呢？立刻窜到花丛中，探寻者着力点，小区的楼层高度这时候看起来特别的高，根本不存在这样的可能性，第一步脚踩在一个空调的钉子上，手抓着墙的两边，个人能力有限，无法继续寻找着力点了，放弃了，继续打电话吧！将自己的包放在地上，找一个温暖的角落坐下来，准备在外露宿了，安静下来，周围黑的把你保卫，根本感觉不到自己的存在。凭借手机微弱的光，我写了一些文字，感觉到困了，就蜷缩着趴了一会。期间，还会隔断时间打个电话，差不多醒了吧，这个侥幸心理一直在让我打这个电话，听到的一直都是“你所拨打的电话…”，听得我的心都崩溃了。就这样我坐在角落里，感觉到背部依靠墙体的刺骨，手机已经渐渐没有电量，很快就剩下最后的1%，心理想着，打最后一个就这样休息一会吧！呵呵，打完还是一样的声音，过了几十秒吧，我的手机响了，我的神呀。听到那个声音顿时十分美丽，立马飞奔我的被窝，老婆大人也特别不好意思，一直跟我抱歉。我立即去洗洗睡了，安慰了一下自己和老婆大人，洗洗睡了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一切都是那么的平和，这些就是生活的插曲。善于感受生活的美好，让一切变得从容。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://7s1r81.com1.z0.glb.clouddn.com/ronchenIMG_1129.JPG&quot; alt=&quot;烛之泪&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;当烛光渐渐微弱，周围都将消失不见，余下的只有回忆！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;晚上看到一篇文章，写的是程序员为什么喜欢夜间工作。脑海中勾勒了一副画面，时至深夜，周围寂静，明亮的屏幕面前奏击着键盘。加上一些轻柔你的音乐，多少个夜晚你是这样度过。烛光渐渐微弱，黑夜渐渐深入，留下的就是没有一丝打扰，他有明确的思路，有前进的方向，为什么不选择一股作气的做下去呢？&lt;br&gt;
+    
+    </summary>
+    
+      <category term="文字感官" scheme="http://wecall.github.io/categories/%E6%96%87%E5%AD%97%E6%84%9F%E5%AE%98/"/>
+    
+    
+      <category term="锁" scheme="http://wecall.github.io/tags/%E9%94%81/"/>
+    
+      <category term="深夜" scheme="http://wecall.github.io/tags/%E6%B7%B1%E5%A4%9C/"/>
+    
+      <category term="坚持" scheme="http://wecall.github.io/tags/%E5%9D%9A%E6%8C%81/"/>
+    
+      <category term="不放弃" scheme="http://wecall.github.io/tags/%E4%B8%8D%E6%94%BE%E5%BC%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《最遥远的距离》</title>
+    <link href="http://wecall.github.io/2014/11/26/%E6%9C%80%E9%81%A5%E8%BF%9C%E7%9A%84%E8%B7%9D%E7%A6%BB/"/>
+    <id>http://wecall.github.io/2014/11/26/最遥远的距离/</id>
+    <published>2014-11-26T03:15:00.000Z</published>
+    <updated>2016-01-21T04:59:33.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://ronchen.qiniudn.com/longlongaway8d5494eef01f3a29b3d518b59925bc315c607ca8.jpg&quot; alt=&quot;最遥远的距离剧照&quot;&gt;&lt;br&gt;一个机缘巧合的机会，我昨天在地铁上看了电影《最遥远的距离》。看到了不同职位的三个人因为对现状生活的不满意交织到了一起。企业白领，心理治疗师，录音师，他们都有一段不美满的恋爱甚至是婚姻。录音师在接受心理治疗之后的哭泣，引发了我的思考。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;心理治疗师通过角色互换治疗他之后，那痛哭的场景，是否有顿悟的感觉，未来会积极的面对现实的生活吗？将放弃他的那个女孩关进心底，重新踏上自己的录音事业？预想着就是一个失落青年重整旗鼓的故事，还有一个的女粉丝一直在追随他环游台湾的脚步…&lt;/li&gt;
+&lt;li&gt;女主角同样有一段不堪回忆的恋爱，偶然的搬到了录音师前女友住过的房子里，坚持听录音师与前女友约定的福尔摩沙之音，让他对录音师有了向往，终于决心去追寻录音师的脚步，去同一个地方留下自己的音迹。打听着这位录音师的一切，当别人问他为什么去哪些地方的时候，她不知如何回答，只知道我就是要去那个地方，每一次都只能发现那是他走过的痕迹的时候却又感觉到和他拥有遥远的距离,当她艰难的找到几个地方之后，有找到了一片墓地，她哭泣了，应该是感觉到了他与她之间遥远的距离，这时候早已忘记了找到第一个地方的兴奋&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;好了，我要下车了，有空再继续看故事发展，希望有一个好的结局吧！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;当天晚上看完了这部电影，三个人都找到了自己新的归宿，男女主角在同一时间到达了同一片沙滩，他们面向同一片海洋，就那样结束了。增加了令人浮现的场景，让结局由观众去想象。那位心理治疗师则在自己心中的海洋寻找到了自己的方向，努力游行，坚信自己一定可以战胜过去的自己。&lt;/p&gt;
+&lt;p&gt;电影终究是电影，生活的不堪在多少个世纪中不断循环。积极面对生活，一切都需要自己去确定方向。我在努力前行，祈祷不会那么曲折。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ronchen.qiniudn.com/longlongaway8d5494eef01f3a29b3d518b59925bc315c607ca8.jpg&quot; alt=&quot;最遥远的距离剧照&quot;&gt;&lt;br&gt;一个机缘巧合的机会，我昨天在地铁上看了电影《最
+    
+    </summary>
+    
+      <category term="文字感官" scheme="http://wecall.github.io/categories/%E6%96%87%E5%AD%97%E6%84%9F%E5%AE%98/"/>
+    
+    
+      <category term="电影" scheme="http://wecall.github.io/tags/%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>花果山</title>
+    <link href="http://wecall.github.io/2014/10/03/%E8%8A%B1%E6%9E%9C%E5%B1%B1/"/>
+    <id>http://wecall.github.io/2014/10/03/花果山/</id>
+    <published>2014-10-03T03:02:07.000Z</published>
+    <updated>2016-01-21T04:42:55.000Z</updated>
+    
+    <content type="html">&lt;p&gt;####花果山&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;海外有一国土，名曰傲来国。国近大海，海中有一座名山，唤为花果山。此山乃十洲之祖脉，三岛之来龙，自开清浊而立，鸿蒙判后而成。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;看西游记中对花果山的描述，联想到自己今年毫无计划的去了一趟连云港的花果山。作为国家星级景区,在十一国庆周的时间段,下了连云港的高速口之后直奔花果山,可能是比较早的缘故，一路上畅通无阻，发现前面拥挤的时候，感觉已经到花果山了，入口需要经过一条很长的路，行驶一小段之后便会发现路边拉停车位的小贩(30块钱一天,里面五十，也有人说里面六十，)，我们一路上半信半疑的进入到了景区的停车场，结果是15块钱。当时感觉到他们靠山吃山，因为这个景区周围多少人有了生计。这还没有什么，进入到景区，门口那个队伍排的毫无秩序，工作人员只管收钱撕票，还会问几个人，心中好像在算着什么…&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;进入门口还有一条很长的路，两边商店林立，还有路边摊，西游记中的各种道具，各种特产充斥我们的眼球。当你看到有一座标志性的大门时候，发现到了山脚，这地方的工作人员异常忙碌，设有专门窗口售票坐车，人潮中我们毫不犹豫的一部分人去排队，一个人去买票，就这样也花了半个小时才坐上上山的车，一路上蜿蜒曲折，惊叹师傅的车技之外，看看山中的人潮，渐渐感觉升高的愉悦。&lt;/p&gt;
+&lt;p&gt;下车之后稍微走走上到了玉女峰，最高点有一块”奇石”，仅供旅客拍照用的，稍等片刻之后，站上去感受了一下，一览山下渺小的景观。来都来了，拍点照片下山去看看传说中的水帘洞吧，一路下来，台阶两边都是卖水和烧烤的小摊，按照景区的地图(5块钱一张买来的)每一个景点逛逛，接近水帘洞就堵得水泻不通了，没有溪水的流动，只是人造的自来水洒下来的感觉，进入洞口必须被水淋一下，黑兮兮的进去参观了一下孙悟空的宝座，一条狭长的隧道不知道把我送到了哪里，好歹在下山的路上走着。&lt;/p&gt;
+&lt;p&gt;一路上走，遇到的就是庙宇，几只饲养的动物，以及景区精心打造的投银币的灵器。按照景区的路走着，一路上可看的东西还是蛮多的，到了山下，那时候已经感觉到累了，顺着人群往出口走去，哎，走呀走呀走到什么时候才能到出口呀，结果是很远。&lt;/p&gt;
+&lt;p&gt;这种景区去一次再也不想去了，估计这是大多数人的想法，听别人说平时水帘洞的水都是没有的，猴子都是在动物园租借过来的，也只是在节假日人多的时候过来耍耍。不知道这样的景区经营还会持续多久的利益，哎，瞎担心这些没用的，又不是我投资建设的。自己下次不去类似于这样的地方就好了。眼不见为净，这是一个大道理呀！！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;####花果山&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;海外有一国土，名曰傲来国。国近大海，海中有一座名山，唤为花果山。此山乃十洲之祖脉，三岛之来龙，自开清浊而立，鸿蒙判后而成。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;看西游记中对花果山的描述，联想到自己今年毫无计划的去了一趟连云港的花果山。作为国家星级景区,在十一国庆周的时间段,下了连云港的高速口之后直奔花果山,可能是比较早的缘故，一路上畅通无阻，发现前面拥挤的时候，感觉已经到花果山了，入口需要经过一条很长的路，行驶一小段之后便会发现路边拉停车位的小贩(30块钱一天,里面五十，也有人说里面六十，)，我们一路上半信半疑的进入到了景区的停车场，结果是15块钱。当时感觉到他们靠山吃山，因为这个景区周围多少人有了生计。这还没有什么，进入到景区，门口那个队伍排的毫无秩序，工作人员只管收钱撕票，还会问几个人，心中好像在算着什么…&lt;br&gt;
+    
+    </summary>
+    
+      <category term="文字感官" scheme="http://wecall.github.io/categories/%E6%96%87%E5%AD%97%E6%84%9F%E5%AE%98/"/>
+    
+    
+      <category term="花果山" scheme="http://wecall.github.io/tags/%E8%8A%B1%E6%9E%9C%E5%B1%B1/"/>
+    
+      <category term="西游记" scheme="http://wecall.github.io/tags/%E8%A5%BF%E6%B8%B8%E8%AE%B0/"/>
+    
+      <category term="连云港" scheme="http://wecall.github.io/tags/%E8%BF%9E%E4%BA%91%E6%B8%AF/"/>
+    
+      <category term="旅游" scheme="http://wecall.github.io/tags/%E6%97%85%E6%B8%B8/"/>
+    
+      <category term="商业化" scheme="http://wecall.github.io/tags/%E5%95%86%E4%B8%9A%E5%8C%96/"/>
+    
+      <category term="景区" scheme="http://wecall.github.io/tags/%E6%99%AF%E5%8C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>项目拯救</title>
+    <link href="http://wecall.github.io/2014/06/04/%E9%A1%B9%E7%9B%AE%E6%8B%AF%E6%95%91/"/>
+    <id>http://wecall.github.io/2014/06/04/项目拯救/</id>
+    <published>2014-06-04T08:49:38.000Z</published>
+    <updated>2016-01-21T04:42:39.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;拯救项目&quot;&gt;&lt;a href=&quot;#拯救项目&quot; class=&quot;headerlink&quot; title=&quot;####拯救项目&quot;&gt;&lt;/a&gt;####拯救项目&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;项目失败每天都有不同的案例，这些事情对于个人来说都是崩溃的事情，如何监测和控制成为一种必须要研究的解决方案。&lt;/em&gt; 今天就通过自己看到的书籍，网上大神的意见，综合自己的看法，写一个系列，剖析一下项目拯救的细节要素，希望今后的团队工作的开心，一起创造。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;看到这些，让我想起了一家之前工作过的在线旅游的公司。他们公司的项目做了十年多，而我2013年接触到这个项目，比较幼嫩的我，完全看不出这个项目隐藏的危机。(顺道来抱怨一下这个项目：刚进去听前人说，这个项目开始于2003年，大概2006年上线了一个版本也赚到了一些钱，2009年左右，老板需要添加一些新的功能，从前台页面开始重新设计并添加了众多模块，悲剧就此上演了，之前的开发团队已经散去，新项目当然全部是新人，这个也不为过。找了以前的人以兼职的形式带领新人去开发这个项目。老板亲自管理开发团队，她对这个项目有十足的信心，十分希望能帮她的项目正常上线，出去宣传都是夸下海口，这个项目什么时候什么时候能上线…拉动政府关系，寻求政府资金支持等等公关都是老板一个人在干…&lt;/p&gt;
+&lt;p&gt;从我接触这个项目没有对这个项目进行分析，从团队来看，当时我们开发团队4人，测试人员1名，兼职人员2名，一个负责需求设计，一个负责数据库的维护。开发人员中有一个担任管理工作，负责每天的任务交接以及任务检查。兼职人员每个周末来测试这个项目进度，以及提出新的需求什么的，需求人员觉得需要添加什么功能了，数据库设计人员觉得少了什么字段了，都是口头的说明，老板说，恩这个需要改，就转交到开发人员手中，之后又不做跟踪，下个周还是这么个流程继续运作着，期间问题不断，改Bug，添加一些功能成为了每天必备的工作任务。&lt;/p&gt;
+&lt;p&gt;接触时间长了，发现老总不相信任何人。之前经过她提出的需求，她看到网页变化之后又不承认那是自己提出的需求，硬要开发人员拿出证据，后来开发人员需要通过邮件确认的东西才会去修改，有字有据以免大家都忘记谁提的需求，谁做出的修改。记得那时十月一日，放假期间，老板打电话给我，让我看看网站怎么变样了，我上去一看，是广告位不显示了，导致下面内容块错位了。由于这个公司的开发环境是封闭的，在公司是上不了网的，只能到上班时间去改，告诉她原因的时候，说广告的时间到期了，前台没有读取到数据，那部分空出来之后被下面的内容给暂用了。结果她说是谁设置广告到期的，定时给我们网站制造问题吗？这是隐形炸弹呀，能不能找到是谁干的，以前的开发人员什么什么的…抱怨完了…我们就当什么都没有听到，继续工作去了。这种事情很多次，开发人员换了N的平方次了，坚持了6个月左右我坚持不住了，走的时候我已经是最后一个走的了，面对一批新人，要我担任管理，我看到了前人的下场，感觉到自己的未来式一样的下场。还是提前自己提出离职比较靠谱，终于在11月中旬离开了这个项目。后期项目也就不得而知了，只知道很在那样的玩转，不断的换人在做，永远都说自己的项目就快上线了，这都成为她的口头禅了。&lt;/p&gt;
+&lt;p&gt;当时我查询了项目成功的关键因素，反过来没有达到这些的就是失败的项目吧！&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个优秀的团队（很明显针对这个项目而言，这只团队因为种种原因不够优秀）&lt;/li&gt;
+&lt;li&gt;管理上有序而且有效（不相信专业人才的管理，全靠自己管理，一团乱）&lt;/li&gt;
+&lt;li&gt;计划期限和成本都在可控范围内（时间严重超期，成本不断攀升）&lt;/li&gt;
+&lt;li&gt;制定发布计划，市场评估计划，迭代计划等（虽说这个公司都有这些计划，但都是前人留下的东西，新人没有专门的管理人员督促实施，也就相当于没有）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://ronchen.qiniudn.com/ronchen拯救项目.jpg&quot; alt=&quot;参考书籍&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这是我系列的第一篇文章，引出后面拯救项目的必要条件，项目管理也许是人人都能做的事情，但绝不是人人都能做好的事情。在互联网影响到其他行业的时候，各个行业的精英都觉得自己拥有互联网思维，都有能力去管理这些项目，祈祷你们的项目能成功吧，做互联网项目真的那么简单吗？至少我接触过好多外界人士都认为项目开发都是简单的事情，人人都能完成的事情。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;拯救项目&quot;&gt;&lt;a href=&quot;#拯救项目&quot; class=&quot;headerlink&quot; title=&quot;####拯救项目&quot;&gt;&lt;/a&gt;####拯救项目&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;项目失败每天都有不同的案例，这些事情对于个人来说都是崩溃的事情，如何监测和
+    
+    </summary>
+    
+      <category term="管理经验" scheme="http://wecall.github.io/categories/%E7%AE%A1%E7%90%86%E7%BB%8F%E9%AA%8C/"/>
+    
+    
+      <category term="开发" scheme="http://wecall.github.io/tags/%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="项目拯救" scheme="http://wecall.github.io/tags/%E9%A1%B9%E7%9B%AE%E6%8B%AF%E6%95%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>功能树</title>
+    <link href="http://wecall.github.io/2013/12/15/%E5%8A%9F%E8%83%BD%E6%A0%91/"/>
+    <id>http://wecall.github.io/2013/12/15/功能树/</id>
+    <published>2013-12-15T02:50:59.000Z</published>
+    <updated>2016-01-21T04:40:27.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;功能树，作为管理信息系统的一种树型结构，将系统的功能采用图形的方式显示出来，方便团队成员信息共享。根据不同级别的需求人员，需求文档略有不同。架构师的工作就是将不同级别的需求人员整理出来的文档进行提取出适合团队的功能树结构。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;这是我最近研究《软件架构设计》得出的一个结论。对于架构师，这是第一步工作，细心程度直接影响下一步工作。学习到需求分析的方法阶段，系统的功能树提取。功能树比较关键也容易混淆，细心分析，才能总结出合理的功能树。不是需求人员做的事情，必须架构师完成。作为了解项目的第一步，能不能打造优秀的产品，初期的功能梳理工作显得至关重要，关系到项目的报价，甚至是最终的成败。&lt;/p&gt;
+&lt;p&gt;功能树的展现基于架构师针对功能梳理给出的一份报告，包括功能点的类型，包括项目可能性的扩展，还需要确认项目的范围和边界，跟需求人员充分沟通，才能得出最终的功能树结构。这份功能树的目标人群是包括编码相关，前端设计师相关，数据库设计相关。功能点的提出体现出该项目设计的粗粒度，功能点的数量直接相关项目的最终报价。包括多个部分功能点的分析，其中包括人机交互分析，数据类型分析， 编程功能分析等等环节。从前期需求整理，目标人群，项目相关等多个环节，每一步都是体现功能树的价值点所在。&lt;/p&gt;
+&lt;p&gt;&lt;i&gt; 顺便学习一下“软件项目中功能点法估算“的原理&lt;/i&gt;：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;功能点分析法(FPA:function point analysis)是在需求分析阶段基于系统功能的一种规模估算方法，是基于应用软件外部、内部特性以及软件性能的一种间接的规模测量。功能点分析的基本计数就是依据标准计算出的系统（或模块）中所含每一种元素的数目。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;功能点的估算中有5种信息域需要进行描述：其中事务类（EI、EO、EQ），数据存储类（ILF、EIF）&lt;/p&gt;
+&lt;p&gt;1、外部输入数（EI：external input） 计算每一个用户输入，它们向软件提供面向应用的数据，（输入应该与查询区分开计算）；&lt;br&gt;2、外部输出数（EO：external output） 计算每一个用户输出，它们向软件提供面向应用的信息，（输出是指报表，屏幕，出错信息等等）；&lt;br&gt;3、外部查询数（EQ：external query） 一次查询被定义为一次联机输入，它导致软件以联机输出的方式产生实时的响应，（计算每一次不同的查询）；&lt;br&gt;4、内部逻辑文件（ILF： internal logical file）计算每一个逻辑的主文件，如数据的一个逻辑组合，它可能是某个大型数据库的一部分或是一个独立的文件；&lt;br&gt;5、外部接口文件（EIF：external interface file） 计算所有机器可读的接口，如磁带或者磁盘上的数据文件、利用这些接口可以将信息从一个系统传送到另一个系统；&lt;/p&gt;
+&lt;p&gt;FP估算表包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每一个测量参数的估算FP计数 = 估算值 * 加权因子&lt;/li&gt;
+&lt;li&gt;项目估算FP = 各参数FP计数之和 * 复杂度调整因子&lt;/li&gt;
+&lt;li&gt;估算生产率由经验获得&lt;/li&gt;
+&lt;li&gt;估算工作量 = 项目估算FP / 估算生产率&lt;/li&gt;
+&lt;li&gt;估算总成本 = 日薪 * 估算工作量&lt;/li&gt;
+&lt;li&gt;单个FPA估算成本 = 估算总成本 / 估算FP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;【参考博客】&lt;a href=&quot;http://blog.csdn.net/Last_Impression/article/details/4403503&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/Last_Impression/article/details/4403503&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;功能树，作为管理信息系统的一种树型结构，将系统的功能采用图形的方式显示出来，方便团队成员信息共享。根据不同级别的需求人员，需求文档略有不同。架构师的工作就是将不同级别的需求人员整理出来的文档进行提取出适合团队的功能树结构。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="管理经验" scheme="http://wecall.github.io/categories/%E7%AE%A1%E7%90%86%E7%BB%8F%E9%AA%8C/"/>
+    
+    
+      <category term="功能树" scheme="http://wecall.github.io/tags/%E5%8A%9F%E8%83%BD%E6%A0%91/"/>
+    
+      <category term="估值" scheme="http://wecall.github.io/tags/%E4%BC%B0%E5%80%BC/"/>
+    
+      <category term="功能点" scheme="http://wecall.github.io/tags/%E5%8A%9F%E8%83%BD%E7%82%B9/"/>
     
   </entry>
   

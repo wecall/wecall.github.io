@@ -1,0 +1,692 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>php常用函数 | 彳亍</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ron Chen">
+    
+
+    
+    <meta name="description" content="##开发常用函数
+
+
+传递任意数量的参数
+
+
+1$args = func_get_args();
+
+
+glob() 查找文件
+
+
+12345678910$files = glob(&apos;*.php&apos;); `输出`Array (    [0] =&amp;gt; test1.php    [1] =&amp;gt; test2.php ) $files =glob(&apos;*.&amp;#123;php,txt&amp;#125;&apos;,GLO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php常用函数">
+<meta property="og:url" content="http://wecall.github.io/2015/01/12/php常用函数/index.html">
+<meta property="og:site_name" content="彳亍">
+<meta property="og:description" content="##开发常用函数
+
+
+传递任意数量的参数
+
+
+1$args = func_get_args();
+
+
+glob() 查找文件
+
+
+12345678910$files = glob(&apos;*.php&apos;); `输出`Array (    [0] =&amp;gt; test1.php    [1] =&amp;gt; test2.php ) $files =glob(&apos;*.&amp;#123;php,txt&amp;#125;&apos;,GLO">
+<meta property="og:updated_time" content="2016-01-21T04:30:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php常用函数">
+<meta name="twitter:description" content="##开发常用函数
+
+
+传递任意数量的参数
+
+
+1$args = func_get_args();
+
+
+glob() 查找文件
+
+
+12345678910$files = glob(&apos;*.php&apos;); `输出`Array (    [0] =&amp;gt; test1.php    [1] =&amp;gt; test2.php ) $files =glob(&apos;*.&amp;#123;php,txt&amp;#125;&apos;,GLO">
+
+    
+    <link rel="alternative" href="/atom.xml" title="彳亍" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="彳亍" title="彳亍"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="彳亍">彳亍</a></h1>
+				<h2 class="blog-motto">多一些禅意，多一些开通。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">彳亍</a></li>
+					
+						<li><a href="/archives">存档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:wecall.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/01/12/php常用函数/" title="php常用函数" itemprop="url">php常用函数</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ron Chen" target="_blank" itemprop="author">Ron Chen</a>
+		
+  <p class="article-time">
+    <time datetime="2015-01-12T07:14:25.000Z" itemprop="datePublished"> 发表于 2015-01-12</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>##开发常用函数</p>
+<blockquote>
+<ul>
+<li>传递任意数量的参数</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$args = func_get_args();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>glob() 查找文件</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$files = glob(<span class="string">'*.php'</span>); </span><br><span class="line">`输出`</span><br><span class="line"><span class="keyword">Array</span></span><br><span class="line"> (</span><br><span class="line">    [<span class="number">0</span>] =&gt; test1.php</span><br><span class="line">    [<span class="number">1</span>] =&gt; test2.php</span><br><span class="line"> )</span><br><span class="line"></span><br><span class="line"> $files =glob(<span class="string">'*.&#123;php,txt&#125;'</span>,GLOB_BRACE);</span><br><span class="line"> $files =glob(<span class="string">'../images/a*.&#123;php,txt,&#125;'</span>,GLOB_BRACE);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>内存使用情况</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">memory_get_usage();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>获取CPU使用情况</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getrusage();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>获取系统常量</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">`魔法常量`</span><br><span class="line"><span class="comment">// 当前行号 // 返回文件的完成路径 // 文件目录 </span></span><br><span class="line"><span class="keyword">__LINE__</span> || <span class="keyword">__FILE__</span>  <span class="comment">// __DIR__</span></span><br><span class="line"></span><br><span class="line">|| 函数名称 || 返回类名 || 返回类的方法名|| </span><br><span class="line"><span class="keyword">__FUNCTION__</span>  || <span class="keyword">__CLASS__</span> || __MEDTHOD__</span><br><span class="line"></span><br><span class="line">`魔方函数`</span><br><span class="line"><span class="comment">//实例化对象   // __删除对象   // 对象调用方法</span></span><br><span class="line">__construct()  || __destruct() || __call()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取对象属性  // 设置对象属性 </span></span><br><span class="line">__get()          || __set()</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印对象    //克隆对象    </span></span><br><span class="line">__toString()  || __clone()  </span><br><span class="line"></span><br><span class="line"><span class="comment">//对象删除部分 //对象初始化  </span></span><br><span class="line">__sleep() || __wakeup()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监测对象 // 对象属性</span></span><br><span class="line">__isset()  || __unset()</span><br><span class="line"></span><br><span class="line"><span class="comment">//实例化对象时，对应类不存在，则该方法被调用</span></span><br><span class="line">__autoload()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>生成唯一的ID</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uniqid(); </span><br><span class="line">uniqid(<span class="string">'ron_'</span>);</span><br><span class="line">uniqid(<span class="string">'ron_'</span>,<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>序列化</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//序列化</span></span><br><span class="line">serialize();  json_encode();</span><br><span class="line"><span class="comment">//反序列化</span></span><br><span class="line">unserialize();  json_decode();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>字符串压缩</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$str = <span class="string">"ssss"</span>;</span><br><span class="line"><span class="comment">//压缩</span></span><br><span class="line">gzcompress($str);</span><br><span class="line"><span class="comment">//解压缩</span></span><br><span class="line">gzuncompress($str);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>数组相关</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">$arr = <span class="keyword">array</span>(<span class="string">'k0'</span>=&gt;<span class="string">'a1'</span>,<span class="string">'k1'</span>=&gt;<span class="string">'a2'</span>,<span class="string">'k2'</span>=&gt;<span class="string">'a3'</span>);</span><br><span class="line"><span class="comment">// $arr是否有'b'元素  true or false</span></span><br><span class="line">in_array(<span class="string">'b'</span>,$arr); </span><br><span class="line"><span class="comment">// $arr是否有'k0'键值  true or false</span></span><br><span class="line">array_key_exists(<span class="string">'k1'</span>,$arr);</span><br><span class="line"><span class="comment">// 将数组键值组成一个新数组</span></span><br><span class="line">array_keys($arr);</span><br><span class="line"><span class="comment">// 将数组元素值组成一个数组</span></span><br><span class="line">array_values($arr);</span><br><span class="line"><span class="comment">//返回当前数组指针指向的值</span></span><br><span class="line">key($arr);</span><br><span class="line"><span class="comment">//返回当前数组指针指向的元素值</span></span><br><span class="line">current($arr);</span><br><span class="line"><span class="comment">//返回当前数组指针指向元素的键,值组成的数组,并将指针指向下一位</span></span><br><span class="line">each($arr);</span><br><span class="line"><span class="comment">//将数组指向下一位,再返回移动后的元素值</span></span><br><span class="line">next($arr);</span><br><span class="line"><span class="comment">//将数组指向下一位,再返回移动后的元素值</span></span><br><span class="line">prev($arr);</span><br><span class="line"><span class="comment">//将数组重置指向第一个元素并返回该元素</span></span><br><span class="line">reset($arr);</span><br><span class="line"><span class="comment">//讲数组指针重置指向最后以为元素,并返回最后一个元素值</span></span><br><span class="line">end($arr);</span><br><span class="line"><span class="comment">//按照数组元素值的Ascii码从小到大排序,索引从0计</span></span><br><span class="line">sort($arr);</span><br><span class="line"><span class="comment">//按照数组元素值的Ascii码从大到小排序,索引从0计</span></span><br><span class="line">rsort($arr);</span><br><span class="line"><span class="comment">//将第一个参数以后的参数追加到数组之后,返回数组长度</span></span><br><span class="line">array_push($arr,<span class="string">"dd"</span>,<span class="string">"aa"</span>);</span><br><span class="line"><span class="comment">//将第一个参数以后的参数追加到数组开头处,返回数组长度</span></span><br><span class="line">array_unshift($arr,<span class="string">"t1"</span>,<span class="string">"t2"</span>);</span><br><span class="line"><span class="comment">//提取最后一个元素值,并将其从数组中剔除</span></span><br><span class="line">array_pop($arr);</span><br><span class="line"><span class="comment">//提取数组头一个元素值，并把头一个元素从原数组中剔除</span></span><br><span class="line">array_shift($arr);</span><br><span class="line"><span class="comment">//让第一个参数数组达到第二个参数数值长度,将第三个参数作为元素添加到第一个参数数组的末尾,索引从最小的没用过的数值开始计</span></span><br><span class="line">array_pad($arr,<span class="number">10</span>,<span class="string">"t1"</span>);</span><br><span class="line"><span class="comment">//去除数组中多余重复的元素</span></span><br><span class="line">array_unique($arr);</span><br><span class="line"><span class="comment">//计算数组中所有数值型元素值的和</span></span><br><span class="line">$int=array_sum($arr);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>字符串相关</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将数组字符用"-"连接成字符串</span></span><br><span class="line">$str = implode(<span class="string">"-"</span>,<span class="keyword">array</span>(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>));</span><br><span class="line"><span class="comment">//字符串分割,用第一个参数里的字符分割第二个参数的字符串，最后一个参数限制返回数组长度，可不限制，则一直分割下去</span></span><br><span class="line">$str = explode(<span class="string">"a"</span>,<span class="string">"aaadedeadfa asdefeadeafr"</span>,<span class="number">7</span>);</span><br><span class="line"><span class="comment">//返回括号里字符串的字符全部大写的字符串</span></span><br><span class="line">$str = strtoupper(<span class="string">"sdaf"</span>);</span><br><span class="line"><span class="comment">//将括号里第一个字符串变成大写后返回</span></span><br><span class="line">$str=ucfirst(<span class="string">"asdf"</span>);</span><br><span class="line"><span class="comment">//用echo等将括号里字符串打印在网页上时原汁原味打印出括号里的字符串，包括标签字符</span></span><br><span class="line">$str=htmlentities(<span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line"><span class="comment">//返回第二个参数字符串在第一个字符串里出现的次数</span></span><br><span class="line">$int=substr_count(<span class="string">"abcdeabcdeablkabd"</span>,<span class="string">"ab"</span>);</span><br><span class="line"><span class="comment">//返回第二个字符串在第一个字符串第一次出现的位置，第一个字符位置算0</span></span><br><span class="line">$int=strpos(<span class="string">"asagaab"</span>,<span class="string">"ab"</span>);</span><br><span class="line"><span class="comment">//返回第二个字符串在第一个字符串最后一次出现的位置，第一个字符位置算0</span></span><br><span class="line">$int=strrpos(<span class="string">"asagaabadfab"</span>,<span class="string">"ab"</span>);</span><br><span class="line"><span class="comment">//将参数二中每一个字符匹配参数一中的字符,匹配成功之后参数一字符前加"\"</span></span><br><span class="line">$str=addcslashes(<span class="string">"abcdefghijklmn"</span>,<span class="string">"akd"</span>);</span><br><span class="line"><span class="comment">//依次比较两字符串对应字符阿斯克码值，第一对不一样的，如果参数一里大于参数二里的返回1,反之返回-1，两字符串完全一样返回0</span></span><br><span class="line">$int=strcmp(<span class="string">"b"</span>,<span class="string">"a"</span>);</span><br><span class="line"><span class="comment">//将参数一的字符串填充到参数二指定的长度（单字符个数），参数三为指定填充的字符串，不写默认空格参数四填充位置，0在参数一左侧开头填充，1右侧开头，2两边开头同时。不写默认在右侧开头填充</span></span><br><span class="line">$str=str_pad(<span class="string">"abcdefgh"</span>,<span class="number">10</span>,<span class="string">"at"</span>,<span class="number">0</span>);</span><br><span class="line"><span class="comment">//返回第一个参数格式化后的数字格式，第二个参数为保留几个小数，参数三为将小数点换成参数三，参数四为整数部分每三位用什么字符分割后面三个参数都不写，则默认去掉小数部分，整数每隔三位用逗号,分割。参数三，参数四必须同时存在</span></span><br><span class="line">$str=number_format(<span class="number">1231233.1415</span>,<span class="number">2</span>,<span class="string">"d"</span>,<span class="string">"a"</span>);</span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术文档/">技术文档</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/开发/">开发</a><a href="/tags/php/">php</a><a href="/tags/函数/">函数</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wecall.github.io/2015/01/12/php常用函数/" data-title="php常用函数 | 彳亍" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/01/27/Makedown/" title="Makedown">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Makedown</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/01/09/PHP编码规范/"  title="PHP编码规范">
+ <strong>下一篇：</strong><br/> 
+ <span>PHP编码规范
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/01/12/php常用函数/" data-title="php常用函数" data-url="http://wecall.github.io/2015/01/12/php常用函数/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="wecall" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/技术文档/" title="技术文档">技术文档<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/文字感官/" title="文字感官">文字感官<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/管理经验/" title="管理经验">管理经验<sup>5</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/语法/" title="语法">语法<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/开发/" title="开发">开发<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术/" title="技术">技术<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php/" title="php">php<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/编程/" title="编程">编程<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/成员/" title="成员">成员<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/node-js/" title="node.js">node.js<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mongoDB/" title="mongoDB">mongoDB<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/db/" title="db">db<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/规范/" title="规范">规范<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Makedown/" title="Makedown">Makedown<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码/" title="代码">代码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/摩羯座/" title="摩羯座">摩羯座<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/函数/" title="函数">函数<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/zencode/" title="zencode">zencode<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/互联网/" title="互联网">互联网<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/公众策划/" title="公众策划">公众策划<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/功能树/" title="功能树">功能树<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/估值/" title="估值">估值<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/功能点/" title="功能点">功能点<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://mindhacks.cn/" target="_blank" title="思维改变生活">刘未鹏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com" target="_blank" title="交流故事，沟通想法">间书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+<div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+              <a href="http://www.wecall.me" target="_blank" title="陈荣荣">Ron Chen</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=9&isTitle=0&noborder=1&isWeibo=1&isFans=1&uid=2663573787&verifier=4fc57bc7&dpc=1"></iframe>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 有理想的人，生活总是火热的。Hello ! I&#39;m Ron Chen in ShangHai China . <br/>
+			--天空虽不曾留下痕迹，但我已飞过。</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2663573787" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wecall" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Ron Chen">Ron Chen</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ronchen"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

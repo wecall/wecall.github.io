@@ -1,0 +1,1753 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>彳亍</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ron Chen">
+    
+
+    
+    <meta name="description" content="慢慢走，欣赏欣赏风景；散散步，放松放松心情；技术小白，生活散客，收集信息，处理信息。不受制于技术，专注领悟技术核心。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="彳亍">
+<meta property="og:url" content="http://wecall.github.io/page/2/index.html">
+<meta property="og:site_name" content="彳亍">
+<meta property="og:description" content="慢慢走，欣赏欣赏风景；散散步，放松放松心情；技术小白，生活散客，收集信息，处理信息。不受制于技术，专注领悟技术核心。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="彳亍">
+<meta name="twitter:description" content="慢慢走，欣赏欣赏风景；散散步，放松放松心情；技术小白，生活散客，收集信息，处理信息。不受制于技术，专注领悟技术核心。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="彳亍" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="彳亍" title="彳亍"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="彳亍">彳亍</a></h1>
+				<h2 class="blog-motto">多一些禅意，多一些开通。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">彳亍</a></li>
+					
+						<li><a href="/archives">存档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:wecall.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/01/27/Makedown/" title="Makedown" itemprop="url">Makedown</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ron Chen" target="_blank" itemprop="author">Ron Chen</a>
+		
+  <p class="article-time">
+    <time datetime="2015-01-27T09:39:55.000Z" itemprop="datePublished"> 发表于 2015-01-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <blockquote>
+<p>Makedown是一种轻量级的标记语言，有没有让你想起HTML。那就对了，他们都是标记语言。相对于HTML,makedown的十分简单，常用的标记符号简单易记忆。</p>
+</blockquote>
+<ul>
+<li><a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" rel="external">创始人的官方文档</a></li>
+<li><a href="http://wowubuntu.com/markdown/#list" target="_blank" rel="external">中文版语法说明</a></li>
+</ul>
+<p>##常用语法说明</p>
+<p>###标题</p>
+<blockquote>
+<p>每篇文章的常用格式，在标题文字前加<code>#</code>,文章会根据标题级数生成目录</p>
+</blockquote>
+<ul>
+<li><code># 一级标题</code></li>
+<li><code>## 二级标题</code></li>
+<li><code>### 三级标题</code></li>
+</ul>
+<p>###列表</p>
+<blockquote>
+<p>列表分为有序列表和无序列表，在文字添加特定符号和<strong>空格</strong>即编程无序列表，在文字前添加数字和<code>.</code>即编程有序列表</p>
+</blockquote>
+<ul>
+<li><code>*</code> <code>+</code> <code>-</code> 无序列表</li>
+<li><code>1.</code> <code>2.</code> <code>3.</code> 有序列表</li>
+</ul>
+<p>###引用</p>
+<blockquote>
+<p>如果你需要引用其他内容，就需要引用格式，只需要在文本前加<code>&gt;</code>即可。不过我一般将他展现成标题的特殊说明</p>
+<p>引用的效果展示</p>
+</blockquote>
+<p>###图片</p>
+<blockquote>
+<p>插入一张图片也是非常简单的事情，<code>![]()</code> 这样的符号轻松解决</p>
+</blockquote>
+<ul>
+<li><code>!</code>  标记该处是一张图片</li>
+<li><code>[]</code> 该图片的标题，类似于HTML的<code>&lt;img&gt;</code>标签的title</li>
+<li><code>()</code> 该图片的链接地址</li>
+</ul>
+<p>###链接</p>
+<blockquote>
+<p>和图片值相差一个符号，<code>[]()</code></p>
+</blockquote>
+<ul>
+<li><code>[]</code> 链接的文本</li>
+<li><code>()</code> 链接地址</li>
+</ul>
+<p>###粗体与斜体</p>
+<blockquote>
+<p>粗体使用两个<code>**</code>包含一段文本，斜体使用<code>*</code>包含一段文本</p>
+</blockquote>
+<ul>
+<li><code>**加粗**</code> <strong>加粗</strong></li>
+<li><code>*斜体*</code> <em>斜体</em></li>
+</ul>
+<p>###表格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">|Table | 标题| 标题 |</span><br><span class="line">|------|-----|------|</span><br><span class="line">| col  | col | col  |</span><br><span class="line">| col  | col | col  |</span><br><span class="line">| col  | col | col  |</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>标题</th>
+<th>标题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>col</td>
+<td>col</td>
+<td>col</td>
+</tr>
+<tr>
+<td>col</td>
+<td>col</td>
+<td>col</td>
+</tr>
+<tr>
+<td>col</td>
+<td>col</td>
+<td>col</td>
+</tr>
+</tbody>
+</table>
+<p>###代码</p>
+<blockquote>
+<p>我们可以优雅的使用个性化的代码框，只需要用两个<em>`</em> 包含代码行或者使用三个<em>`</em> 包含代码段即可</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>代码效果<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>###分割线</p>
+<blockquote>
+<p>使用<code>***</code> 或者 <code>---</code> 即可在该行生成一条分割线</p>
+</blockquote>
+<hr>
+<p>###删除线</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~删除效果~~</span><br></pre></td></tr></table></figure>
+<p><del>删除效果</del></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术文档/">技术文档</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Makedown/">Makedown</a><a href="/tags/编程/">编程</a><a href="/tags/语法/">语法</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/01/27/Makedown/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/01/27/Makedown/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/01/12/php常用函数/" title="php常用函数" itemprop="url">php常用函数</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ron Chen" target="_blank" itemprop="author">Ron Chen</a>
+		
+  <p class="article-time">
+    <time datetime="2015-01-12T07:14:25.000Z" itemprop="datePublished"> 发表于 2015-01-12</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>##开发常用函数</p>
+<blockquote>
+<ul>
+<li>传递任意数量的参数</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$args = func_get_args();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>glob() 查找文件</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$files = glob(<span class="string">'*.php'</span>); </span><br><span class="line">`输出`</span><br><span class="line"><span class="keyword">Array</span></span><br><span class="line"> (</span><br><span class="line">    [<span class="number">0</span>] =&gt; test1.php</span><br><span class="line">    [<span class="number">1</span>] =&gt; test2.php</span><br><span class="line"> )</span><br><span class="line"></span><br><span class="line"> $files =glob(<span class="string">'*.&#123;php,txt&#125;'</span>,GLOB_BRACE);</span><br><span class="line"> $files =glob(<span class="string">'../images/a*.&#123;php,txt,&#125;'</span>,GLOB_BRACE);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>内存使用情况</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">memory_get_usage();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>获取CPU使用情况</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getrusage();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>获取系统常量</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">`魔法常量`</span><br><span class="line"><span class="comment">// 当前行号 // 返回文件的完成路径 // 文件目录 </span></span><br><span class="line"><span class="keyword">__LINE__</span> || <span class="keyword">__FILE__</span>  <span class="comment">// __DIR__</span></span><br><span class="line"></span><br><span class="line">|| 函数名称 || 返回类名 || 返回类的方法名|| </span><br><span class="line"><span class="keyword">__FUNCTION__</span>  || <span class="keyword">__CLASS__</span> || __MEDTHOD__</span><br><span class="line"></span><br><span class="line">`魔方函数`</span><br><span class="line"><span class="comment">//实例化对象   // __删除对象   // 对象调用方法</span></span><br><span class="line">__construct()  || __destruct() || __call()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取对象属性  // 设置对象属性 </span></span><br><span class="line">__get()          || __set()</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印对象    //克隆对象    </span></span><br><span class="line">__toString()  || __clone()  </span><br><span class="line"></span><br><span class="line"><span class="comment">//对象删除部分 //对象初始化  </span></span><br><span class="line">__sleep() || __wakeup()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监测对象 // 对象属性</span></span><br><span class="line">__isset()  || __unset()</span><br><span class="line"></span><br><span class="line"><span class="comment">//实例化对象时，对应类不存在，则该方法被调用</span></span><br><span class="line">__autoload()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>生成唯一的ID</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uniqid(); </span><br><span class="line">uniqid(<span class="string">'ron_'</span>);</span><br><span class="line">uniqid(<span class="string">'ron_'</span>,<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>序列化</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//序列化</span></span><br><span class="line">serialize();  json_encode();</span><br><span class="line"><span class="comment">//反序列化</span></span><br><span class="line">unserialize();  json_decode();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>字符串压缩</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$str = <span class="string">"ssss"</span>;</span><br><span class="line"><span class="comment">//压缩</span></span><br><span class="line">gzcompress($str);</span><br><span class="line"><span class="comment">//解压缩</span></span><br><span class="line">gzuncompress($str);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>数组相关</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">$arr = <span class="keyword">array</span>(<span class="string">'k0'</span>=&gt;<span class="string">'a1'</span>,<span class="string">'k1'</span>=&gt;<span class="string">'a2'</span>,<span class="string">'k2'</span>=&gt;<span class="string">'a3'</span>);</span><br><span class="line"><span class="comment">// $arr是否有'b'元素  true or false</span></span><br><span class="line">in_array(<span class="string">'b'</span>,$arr); </span><br><span class="line"><span class="comment">// $arr是否有'k0'键值  true or false</span></span><br><span class="line">array_key_exists(<span class="string">'k1'</span>,$arr);</span><br><span class="line"><span class="comment">// 将数组键值组成一个新数组</span></span><br><span class="line">array_keys($arr);</span><br><span class="line"><span class="comment">// 将数组元素值组成一个数组</span></span><br><span class="line">array_values($arr);</span><br><span class="line"><span class="comment">//返回当前数组指针指向的值</span></span><br><span class="line">key($arr);</span><br><span class="line"><span class="comment">//返回当前数组指针指向的元素值</span></span><br><span class="line">current($arr);</span><br><span class="line"><span class="comment">//返回当前数组指针指向元素的键,值组成的数组,并将指针指向下一位</span></span><br><span class="line">each($arr);</span><br><span class="line"><span class="comment">//将数组指向下一位,再返回移动后的元素值</span></span><br><span class="line">next($arr);</span><br><span class="line"><span class="comment">//将数组指向下一位,再返回移动后的元素值</span></span><br><span class="line">prev($arr);</span><br><span class="line"><span class="comment">//将数组重置指向第一个元素并返回该元素</span></span><br><span class="line">reset($arr);</span><br><span class="line"><span class="comment">//讲数组指针重置指向最后以为元素,并返回最后一个元素值</span></span><br><span class="line">end($arr);</span><br><span class="line"><span class="comment">//按照数组元素值的Ascii码从小到大排序,索引从0计</span></span><br><span class="line">sort($arr);</span><br><span class="line"><span class="comment">//按照数组元素值的Ascii码从大到小排序,索引从0计</span></span><br><span class="line">rsort($arr);</span><br><span class="line"><span class="comment">//将第一个参数以后的参数追加到数组之后,返回数组长度</span></span><br><span class="line">array_push($arr,<span class="string">"dd"</span>,<span class="string">"aa"</span>);</span><br><span class="line"><span class="comment">//将第一个参数以后的参数追加到数组开头处,返回数组长度</span></span><br><span class="line">array_unshift($arr,<span class="string">"t1"</span>,<span class="string">"t2"</span>);</span><br><span class="line"><span class="comment">//提取最后一个元素值,并将其从数组中剔除</span></span><br><span class="line">array_pop($arr);</span><br><span class="line"><span class="comment">//提取数组头一个元素值，并把头一个元素从原数组中剔除</span></span><br><span class="line">array_shift($arr);</span><br><span class="line"><span class="comment">//让第一个参数数组达到第二个参数数值长度,将第三个参数作为元素添加到第一个参数数组的末尾,索引从最小的没用过的数值开始计</span></span><br><span class="line">array_pad($arr,<span class="number">10</span>,<span class="string">"t1"</span>);</span><br><span class="line"><span class="comment">//去除数组中多余重复的元素</span></span><br><span class="line">array_unique($arr);</span><br><span class="line"><span class="comment">//计算数组中所有数值型元素值的和</span></span><br><span class="line">$int=array_sum($arr);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>字符串相关</li>
+</ul>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将数组字符用"-"连接成字符串</span></span><br><span class="line">$str = implode(<span class="string">"-"</span>,<span class="keyword">array</span>(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>));</span><br><span class="line"><span class="comment">//字符串分割,用第一个参数里的字符分割第二个参数的字符串，最后一个参数限制返回数组长度，可不限制，则一直分割下去</span></span><br><span class="line">$str = explode(<span class="string">"a"</span>,<span class="string">"aaadedeadfa asdefeadeafr"</span>,<span class="number">7</span>);</span><br><span class="line"><span class="comment">//返回括号里字符串的字符全部大写的字符串</span></span><br><span class="line">$str = strtoupper(<span class="string">"sdaf"</span>);</span><br><span class="line"><span class="comment">//将括号里第一个字符串变成大写后返回</span></span><br><span class="line">$str=ucfirst(<span class="string">"asdf"</span>);</span><br><span class="line"><span class="comment">//用echo等将括号里字符串打印在网页上时原汁原味打印出括号里的字符串，包括标签字符</span></span><br><span class="line">$str=htmlentities(<span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line"><span class="comment">//返回第二个参数字符串在第一个字符串里出现的次数</span></span><br><span class="line">$int=substr_count(<span class="string">"abcdeabcdeablkabd"</span>,<span class="string">"ab"</span>);</span><br><span class="line"><span class="comment">//返回第二个字符串在第一个字符串第一次出现的位置，第一个字符位置算0</span></span><br><span class="line">$int=strpos(<span class="string">"asagaab"</span>,<span class="string">"ab"</span>);</span><br><span class="line"><span class="comment">//返回第二个字符串在第一个字符串最后一次出现的位置，第一个字符位置算0</span></span><br><span class="line">$int=strrpos(<span class="string">"asagaabadfab"</span>,<span class="string">"ab"</span>);</span><br><span class="line"><span class="comment">//将参数二中每一个字符匹配参数一中的字符,匹配成功之后参数一字符前加"\"</span></span><br><span class="line">$str=addcslashes(<span class="string">"abcdefghijklmn"</span>,<span class="string">"akd"</span>);</span><br><span class="line"><span class="comment">//依次比较两字符串对应字符阿斯克码值，第一对不一样的，如果参数一里大于参数二里的返回1,反之返回-1，两字符串完全一样返回0</span></span><br><span class="line">$int=strcmp(<span class="string">"b"</span>,<span class="string">"a"</span>);</span><br><span class="line"><span class="comment">//将参数一的字符串填充到参数二指定的长度（单字符个数），参数三为指定填充的字符串，不写默认空格参数四填充位置，0在参数一左侧开头填充，1右侧开头，2两边开头同时。不写默认在右侧开头填充</span></span><br><span class="line">$str=str_pad(<span class="string">"abcdefgh"</span>,<span class="number">10</span>,<span class="string">"at"</span>,<span class="number">0</span>);</span><br><span class="line"><span class="comment">//返回第一个参数格式化后的数字格式，第二个参数为保留几个小数，参数三为将小数点换成参数三，参数四为整数部分每三位用什么字符分割后面三个参数都不写，则默认去掉小数部分，整数每隔三位用逗号,分割。参数三，参数四必须同时存在</span></span><br><span class="line">$str=number_format(<span class="number">1231233.1415</span>,<span class="number">2</span>,<span class="string">"d"</span>,<span class="string">"a"</span>);</span><br></pre></td></tr></table></figure>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术文档/">技术文档</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/开发/">开发</a><a href="/tags/php/">php</a><a href="/tags/函数/">函数</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/01/12/php常用函数/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/01/12/php常用函数/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/01/09/PHP编码规范/" title="PHP编码规范" itemprop="url">PHP编码规范</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ron Chen" target="_blank" itemprop="author">Ron Chen</a>
+		
+  <p class="article-time">
+    <time datetime="2015-01-09T09:19:50.000Z" itemprop="datePublished"> 发表于 2015-01-09</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <blockquote>
+<p>规范的代码在团队合作中尤其重要，很多开发人员不愿意看别人的代码，是因为种种管理规范的人员工作没有做好，最后都施加到了程序员身上去解决面对这些窘境。</p>
+</blockquote>
+<p>目前毕竟浏览的软件项目质量管理的软件【sonar】,里面规范了各种语言代码应该遵循的规范，个人感觉身为团队的一员，有必要在这方面提升一下自己的编程素质。</p>
+<hr>
+<ul>
+<li>类的大括号在后面不是另起一行; eg： class user{</li>
+<li>变量名首字母小写,采用驼峰模式(小驼峰法); eg: userAge [a-z][a-zA-Z0-9]*</li>
+<li>类文件名只允许字母,首字母大写(大驼峰法); </li>
+<li>注释要另起一行,不要跟在代码后面;</li>
+<li>移除已经注释的代码片段;</li>
+<li>switch至少包含3个case,否则使用if;</li>
+<li>switch要加 default;</li>
+<li>if等嵌套不能超过3次;</li>
+<li>类中的方法不能超过20个,否则考虑拆分;</li>
+<li>移除没用的参数;</li>
+<li>移除没用的变量;</li>
+<li>if必须要跟else;</li>
+<li>if总是跟着大括号;</li>
+<li>代码中不要有太多的return;</li>
+<li>每行结尾不允许有多余的空格;</li>
+<li>每行代码长度控制在80个字符以内,最长不要超过120个字符;</li>
+<li>使用4个空格作为缩进，而不使用tab缩进,编辑器最好事先设定;</li>
+<li>函数中用逗号来分隔参数，所有的参数与前面的逗号之间要空格(第一个参数除外);</li>
+<li>除了参数之间要使用空格外，所有操作符之间都要使用空格，包括字符连接符(.);</li>
+</ul>
+<hr>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="keyword">if</span>(a==b)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//`应该写成`</span></span><br><span class="line"><span class="keyword">return</span> condition;</span><br><span class="line"><span class="keyword">return</span> a==b;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//`直接返回`</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compute_duration_in_milliseconds</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  $duration = ((($hours * <span class="number">60</span>) + $minutes) * <span class="number">60</span> + $seconds ) * <span class="number">1000</span> ;</span><br><span class="line">  <span class="keyword">return</span> $duration;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Compliant Solution</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compute_duration_in_milliseconds</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> ((($hours * <span class="number">60</span>) + $minutes) * <span class="number">60</span> + $seconds ) * <span class="number">1000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//`出现重复参数`</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Non-Compliant - 'action1' is duplicated 3 times</span></span><br><span class="line">  prepare(<span class="string">'action1'</span>);       </span><br><span class="line">  execute(<span class="string">'action1'</span>);</span><br><span class="line">  release(<span class="string">'action1'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//`正确的做法`</span></span><br><span class="line">ACTION_1 = <span class="string">'action1'</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  prepare(ACTION_1);</span><br><span class="line">  execute(ACTION_1);</span><br><span class="line">  release(ACTION_1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//布尔值直接判断</span></span><br><span class="line"><span class="keyword">if</span> ($booleanVariable == <span class="keyword">true</span>) &#123; <span class="comment">/* ... */</span> &#125;</span><br><span class="line"><span class="keyword">if</span> ($booleanVariable != <span class="keyword">true</span>) &#123; <span class="comment">/* ... */</span> &#125;</span><br><span class="line"><span class="keyword">if</span> ($booleanVariable || <span class="keyword">false</span>) &#123; <span class="comment">/* ... */</span> &#125;</span><br><span class="line">doSomething(!<span class="keyword">false</span>);</span><br><span class="line">Compliant Solution</span><br><span class="line"><span class="keyword">if</span> ($booleanVariable) &#123; <span class="comment">/* ... */</span> &#125;</span><br><span class="line"><span class="keyword">if</span> (!$booleanVariable) &#123; <span class="comment">/* ... */</span> &#125;</span><br><span class="line"><span class="keyword">if</span> ($booleanVariable) &#123; <span class="comment">/* ... */</span> &#125;</span><br><span class="line">doSomething(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>千万别认为我是处女座的,在此公开一下自己的星座 <code>摩羯座</code></p>
+</blockquote>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术文档/">技术文档</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/规范/">规范</a><a href="/tags/php/">php</a><a href="/tags/代码/">代码</a><a href="/tags/摩羯座/">摩羯座</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/01/09/PHP编码规范/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/01/09/PHP编码规范/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/01/07/zencode/" title="zencode" itemprop="url">zencode</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ron Chen" target="_blank" itemprop="author">Ron Chen</a>
+		
+  <p class="article-time">
+    <time datetime="2015-01-07T02:57:45.000Z" itemprop="datePublished"> 发表于 2015-01-07</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>#常用语法<br>程序员高效的工作少不了工具的帮助,特此为大家整理一个系列的工具篇</p>
+<blockquote>
+<ul>
+<li>说明用途:使用元素的名称生成Html标签; eg: div -&gt; <div></div></li>
+<li>准备工作,搜索一下自己的浏览器是否支持Emmet插件; eg: sublime text  Emmet</li>
+<li>查看文档,熟悉zencode的语法; eg: <a href="http://docs.emmet.io/abbreviations/syntax/" target="_blank" rel="external">emmet官方文档</a></li>
+<li>操作方式,输入语句,按一下生成的快捷键,各个编辑器略有不同; eg:  !  [Ctrl+E]</li>
+</ul>
+</blockquote>
+<p><code>让我们一起来感受一下它的神奇之处</code></p>
+<hr>
+<h4 id="结构篇"><a href="#结构篇" class="headerlink" title="结构篇"></a>结构篇</h4><p><code>(html:5 html:xml )</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;<span class="name">body</span>&gt;</span>    </span><br><span class="line">&gt; <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="属性篇"><a href="#属性篇" class="headerlink" title="属性篇"></a>属性篇</h4><p><code>(. class ; # id ; {} text ; [] 其他属性)</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.col#row</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col"</span> <span class="attr">id</span>=<span class="string">"row"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p&#123;记住这种用法,编码神器&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="tag">&lt;<span class="name">p</span>&gt;</span>记住这种用法,编码神器<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.col[title="快"]&#123;Html tag&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>a 的href属性会自动生成;</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">"col"</span> <span class="attr">title</span>=<span class="string">"快"</span>&gt;</span>Html tag<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<h4 id="符号篇"><a href="#符号篇" class="headerlink" title="符号篇"></a>符号篇</h4><p><code>(&gt; + ^ *)</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div+div&gt;ul&gt;li&gt;span+a.col</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">&gt;       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">"col"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><code>^^ 当前元素的父元素的父元素</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div&gt;ul&gt;li&gt;span^^ul&gt;li&gt;a</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">&gt;       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">&gt;       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><code>*5 5个类似的元素 $ 默认重1开始,自增参数</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div&gt;ul&gt;li.item$*5</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">&gt;       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">&gt;       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ul&gt;li.item$$$*5</span><br></pre></td></tr></table></figure>
+<blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item001"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item002"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item003"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item004"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&gt;   <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item005"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术文档/">技术文档</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/编程/">编程</a><a href="/tags/语法/">语法</a><a href="/tags/zencode/">zencode</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/01/07/zencode/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/01/07/zencode/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/31/Node-js开发指南/" title="Node.js开发指南" itemprop="url">Node.js开发指南</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ron Chen" target="_blank" itemprop="author">Ron Chen</a>
+		
+  <p class="article-time">
+    <time datetime="2014-12-31T06:52:02.000Z" itemprop="datePublished"> 发表于 2014-12-31</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>##了解Node.js</p>
+<ul>
+<li>具有复杂逻辑的网站</li>
+<li>社交网络的大规模Web应用</li>
+<li>Web Socket服务器</li>
+<li>命令行工具</li>
+<li>交互式终端程序</li>
+<li>单元测试工具</li>
+<li>客户端Javascript编译器</li>
+<li>带有图形用户界面的本地应用程序</li>
+</ul>
+<p>##Node.js初体验</p>
+<ul>
+<li>I/O密集型项目</li>
+<li><a href="http://nodejs.org/" target="_blank" rel="external">nodejs官网</a></li>
+<li>程序实例:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>,&#123;<span class="string">'Content-Type'</span>:<span class="string">'text/html'</span>&#125;);</span><br><span class="line">    res.write(<span class="string">"&lt;h1&gt;Ron Chen&lt;/h1&gt;"</span>);</span><br><span class="line">    res.write(<span class="string">"&lt;p&gt;tech only&lt;/p&gt;"</span>);</span><br><span class="line">&#125;).listen(<span class="number">3000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"HTTP Server is listening at port 3000 ."</span>);</span><br></pre></td></tr></table></figure>
+<p>##学习日记</p>
+<p>###异步式I/O与事件式编程</p>
+<p><code>阻塞</code> 线程无法及时调度,一般发生于同步式的I/O操作，例如磁盘读写,网络通信</p>
+<table>
+<thead>
+<tr>
+<th>同步式I/O(阻塞式)</th>
+<th>异步式I/O(非阻塞式)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>利用多线程提升吞吐量</td>
+<td>单线程即可实现高吞吐量</td>
+</tr>
+<tr>
+<td>通过事件分割和线程调度利用多核CPU</td>
+<td>通过功能划分利用多核CPU</td>
+</tr>
+<tr>
+<td>需要由操作系统调度多线程使用多核CPU</td>
+<td>可以将单进程绑定到单核CPU</td>
+</tr>
+<tr>
+<td>难以充分利用CPU资源</td>
+<td>可以充分利用CPU资源</td>
+</tr>
+<tr>
+<td>内存轨迹大,数据局部性弱</td>
+<td>内存轨迹小,数据局部性强</td>
+</tr>
+<tr>
+<td>符合线性编程思维</td>
+<td>不符合传统的编程思想</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>###事件循环</p>
+<blockquote>
+<p>Node.js程序由事件循环开始，到事件循环结束,所有的逻辑都是事件的回调函数。它没有显式的事件循环，事件循环通过Libev库实现，对开发者不可见,均被EventEmitter封装。<br>libev事件循环的每一次迭代,在Node.js中就是一次Tick,libev不断检查是否有活动的、可供检测的事件监听器，直到检测不到时才退出循环,进程结束。</p>
+</blockquote>
+<p><img src="http://ronchen.qiniudn.com/ronchenQQ截图20150113094124.png" alt="事件循环" title="事件循环"></p>
+<p>###模块和包<br>包:实现某个功能模块的集合,用户发布和维护。<br>模块：node.js应用程序的组成部分,文件和模块是一一对应的。</p>
+<p>####模块<br>exports: 模块公开的接口<br>require: 外部获取一个模块的接口,所获取模块的exports对象<br><code>注意:</code></p>
+<blockquote>
+<p>require 类似于创建对象,但是实际上和对象又有本质的区别,因为require不会重复加载模块,也就是说,无论调用多少次require,获得的模块都是同一个;<br>exports 本身仅仅是一个普通的空对象,专门用来声明接口,本质上是通过它为模块闭包的内部建立一个有限的访问接口;</p>
+</blockquote>
+<p>####包</p>
+<ul>
+<li>package.json必须在包的顶层目录下;</li>
+<li>二进制文件应该在bin目录下;</li>
+<li>Javascript代码应该在lib目录下;</li>
+<li>文档应该在doc目录下;</li>
+<li>单元测试应该在test目录下;</li>
+</ul>
+<p>package.json说明:</p>
+<ul>
+<li>name: 包的名称,必须是唯一的,小写英文字母+下划线+数字,不允许有空格</li>
+<li>description: 简要说明</li>
+<li>version: 版本字符串,符合语义化规范</li>
+<li>keywords:关键字数组,便于搜索</li>
+<li>maintainers:维护者数组，{name,email<code>可选</code>,web<code>可选</code>}</li>
+<li>contributors:贡献者数组,同上</li>
+<li>bugs:提交Bug的地址</li>
+<li>licenses:许可证数组,{type[许可证名称],url[链接地址]}</li>
+<li>repositories:仓库托管地址数组,{type[仓库类型],url[仓库地址],path[仓库路径]}</li>
+<li>dependencies:包的依赖数组{[包的名称],[包的版本号]}</li>
+</ul>
+<blockquote>
+<p>Node.js官方提供的包管理器,标准发布平台</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//本地模式</span></span><br><span class="line">npm [install/i] package_name </span><br><span class="line"><span class="comment">//全局模式</span></span><br><span class="line">npm [install/i] -g package_name</span><br></pre></td></tr></table></figure>
+<p>####包的发布<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成规范的package.json</span></span><br><span class="line">npm init</span><br><span class="line"><span class="comment">//发布  [包管理]https://www.npmjs.com/</span></span><br><span class="line">npm publish</span><br><span class="line"><span class="comment">//取消发布</span></span><br><span class="line">npm unpublish</span><br></pre></td></tr></table></figure></p>
+<p>###node.js调试</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//打开调试终端</span></span><br><span class="line">node debug debug.js</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>run <code>执行脚本,在第一行暂停</code></li>
+<li>restart <code>重新执行脚本</code></li>
+<li>cont,c  <code>继续执行,直到遇到下一个断点</code></li>
+<li>next,n  <code>单步执行</code></li>
+<li>step,s  <code>单步执行并进入函数</code></li>
+<li>out,o   <code>从函数中步出</code></li>
+<li>setBreakpoint(),sb() <code>当前行设置断点</code></li>
+<li>setBreakpoint(‘f{}’),sb(…) <code>在函数f第一行设置断点</code></li>
+<li>setBreakpoint(‘script.js’,20),sb(…) <code>在script.js的第一行设置断点</code></li>
+<li>clearBreakpoint(),cb(…) <code>清除所有断点</code></li>
+<li>backtrace,bt <code>显示当前调用栈</code></li>
+<li>list(5)  <code>显示当前执行到的前后5行代码</code></li>
+<li>watch(expr) <code>把表达式expr加入监视列表</code></li>
+<li>unwatch(expr) <code>把表达式expr从监视列表移除</code></li>
+<li>watchers  <code>显示监视列表中所有的表达式和值</code></li>
+<li>repl  <code>在当前上下文打开即时求值环境</code></li>
+<li>kill  <code>终止当前执行的脚本</code></li>
+<li>scripts <code>显示当前已加载的所有脚本</code></li>
+<li>version <code>显示V8的版本</code></li>
+</ul>
+<p>###核心模块</p>
+<p>####全局变量<br>global 是全局变量的宿主,定义变量使用var 区别于全局变量.</p>
+<p>process是一个全局变量,即Global对象属性.最常用的成员方法:</p>
+<ul>
+<li>process.argv 命令行参数数组</li>
+<li>process.stdout 标准输出流,通常使用<code>console.log</code></li>
+<li>process.stdin 标准输入流</li>
+<li>process.nextTick 为事件循环设置一项任务,在下次事件循环调响应时调用callback.不用使用setTimeout(fn,0)代替process.nextTick(callback)<br>console 控制台标准输出<ul>
+<li>console.log() 类似于C语言printf()，多个参数输出，以换行结束</li>
+<li>console.error() 错误流输出,类似于console.log()</li>
+<li>console.trace() 输出当前调用栈</li>
+</ul>
+</li>
+</ul>
+<p>####常用工具util</p>
+<ul>
+<li>util.inherits(constructor,superConstructor)对象间原型继承函数</li>
+<li>util.inspect(object,[showHidden],[depth],[colors]) 将任意对象转换成为字符串</li>
+<li>util.isArray() , util.isRegExp() , util.isDate()</li>
+<li>util.isError() , util.format() , util.debug()</li>
+</ul>
+<p>####事件驱动<br>events是Node.js最重要的模块，Node.js本身架构就是事件式的,而他提供了唯一的接口,堪称Node.js的基石</p>
+<hr>
+<ul>
+<li>events.EventEmitter 事件发射与事件监听器功能的封装;</li>
+<li>EventEmitter.on(event,listener) 为指定事件注册一个监听器;<ul>
+<li>event:一个字符串;listener:回调函数;</li>
+</ul>
+</li>
+<li>EventEmitter.emit(event,[arg1],[arg2]…) 发射event事件;<ul>
+<li>传递可选参数到事件监听器的参数表</li>
+</ul>
+</li>
+<li>EventEmitter.once(event,listener) 为指定事件注册一个单次监听器;</li>
+<li>EventEmitter.removeListener(event,listener) 移除指定事件的某个监听器;<ul>
+<li>listener:必须是该事件已经注册过的监听器</li>
+</ul>
+</li>
+<li>EventEmitter.removeAllListener([event]) 移除所有事件的所有监听器;<ul>
+<li>如果event,则移除指定事件的所有监听器</li>
+</ul>
+</li>
+<li>更多API参考:<a href="http://nodejs.org/api/events.html" target="_blank" rel="external">API文档</a></li>
+</ul>
+<hr>
+<p><code>error事件</code>当我们遇到异常的时候通常会发射error事件,当error被发射时,EventEmitter规定如果没有响应的监听器,Node.js会把它当作异常,退出并打印调用栈.</p>
+<p>####继承EventEmitter</p>
+<blockquote>
+<p>只要是支持事件响应的核心模块都是EventEmitter的子类：fs,net,http</p>
+</blockquote>
+<p>#####文件系统 fs</p>
+<blockquote>
+<p>fs模块是文件操作的封装,提供了文件的读取,写入,更名,删除,遍历目录,链接等POSIX文件系统操作.<br>fs模块中的所有操作都提供了异步的和同步的两个版本.</p>
+</blockquote>
+<p><code>列出常用的函数:</code></p>
+<ul>
+<li>fs.readFile:<ul>
+<li>调用方法:fs.readFile(filename,[encoding],[callback(err,data)])</li>
+<li>参数说明:<ul>
+<li>filename:[必选] 读取的文件名</li>
+<li>encoding:[可选] 文件的字符编码</li>
+<li>callback:[可选] 回调函数,接收文件内容<ul>
+<li>err : 有没有错误发生</li>
+<li>data:文件内容[如果指明encoding,data是一个字符串]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>异步函数</th>
+<th>同步函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>打开文件</td>
+<td>fs.open(path,flags,[mode],[callback(err,fd)])</td>
+<td>fs.openSync(path,flags,[mode])</td>
+</tr>
+<tr>
+<td>关闭文件</td>
+<td>fs.close(fd,[callback(err)])</td>
+<td>fs.closeSync(fd)</td>
+</tr>
+<tr>
+<td>读取文件(文件扫描符)</td>
+<td>fs.read(fd,buffer,offset,length,position,[callback(err,bytesRead,buffer)])</td>
+<td>fs.readSync(fd,buffer,offset,length,position)</td>
+</tr>
+<tr>
+<td>写入文件(文件扫描符)</td>
+<td>fs.write(fd,buffer,offset,length,position,[callback(err,bytesWritten,buffer)])</td>
+<td>fs.writeSync(fd,buffer,offset,lenght,position)</td>
+</tr>
+<tr>
+<td>读取文件内容</td>
+<td>fs.readfile(filename,[encoding],[callback(err,data)])</td>
+<td>fs.readFileSync(filename,[encoding])</td>
+</tr>
+<tr>
+<td>写入文件内容</td>
+<td>fs.writeFile(filename,data,[encoding],[callback(err)])</td>
+<td>fs.writeFileSync(filename,data,[encoding])</td>
+</tr>
+<tr>
+<td>删除文件</td>
+<td>fs.unlink(path,[callback(err)])</td>
+<td>fs.unlinkSync(path)</td>
+</tr>
+<tr>
+<td>创建目录</td>
+<td>fs.mkdir(path,[mode],[callback(err)])</td>
+<td>fs.mkdirSync(path,[mode])</td>
+</tr>
+<tr>
+<td>删除目录</td>
+<td>fs.rmdir(path,[callback(err)])</td>
+<td>fs.rmdirSync(path)</td>
+</tr>
+<tr>
+<td>读取目录</td>
+<td>fs.readdir(path,[callback(err,files)])</td>
+<td>fs.readdirSync(path)</td>
+</tr>
+<tr>
+<td>获取真实路径</td>
+<td>fs.readpath(path,[callback(err,resolvePath)])</td>
+<td>fs.readpathSync(path)</td>
+</tr>
+<tr>
+<td>更名</td>
+<td>fs.rename(path1,path2,[callback(err)])</td>
+<td>fs.renameSync(path1,path2)</td>
+</tr>
+<tr>
+<td>截断</td>
+<td>fs.truncate(fd,len,[callback(err)])</td>
+<td>fs.truncate(fd,len)</td>
+</tr>
+<tr>
+<td>更改所有权</td>
+<td>fs.chown(path,uid,gid,[callback(err)])</td>
+<td>fs.chownSync(path,uid,gid)</td>
+</tr>
+<tr>
+<td>更改所有权(文件扫描符)</td>
+<td>fs.fchown(fd,uid,gid,[callback(err)])</td>
+<td>fs.fchownSync(fd,uid,gid)</td>
+</tr>
+<tr>
+<td>更改所有权(不解析符号链接)</td>
+<td>fs.lchown(path,uid,gid,[callback(err)])</td>
+<td>fs.lchownSync(path,uid,gid)</td>
+</tr>
+<tr>
+<td>更改权限</td>
+<td>fs.chmod(path,mode,[callback(err)])</td>
+<td>fs.chmodSync(path,mode)</td>
+</tr>
+<tr>
+<td>更改权限(文件扫描符)</td>
+<td>fs.fchmod(path,mode,[callback(err)])</td>
+<td>fs.fchmodSync(path,mode)</td>
+</tr>
+<tr>
+<td>更改权限(不解析符号链接)</td>
+<td>fs.lchmod(path,mode,[callback(err)])</td>
+<td>fs.lchmodSync(path,mode)</td>
+</tr>
+<tr>
+<td>获取文件信息</td>
+<td>fs.stat(path,[callback(err,stats)])</td>
+<td>fs.statSync(path)</td>
+</tr>
+<tr>
+<td>获取文件信息(文件扫描符)</td>
+<td>fs.fstat(fd,[callback(err,stats)])</td>
+<td>fs.fstatSync(fd)</td>
+</tr>
+<tr>
+<td>获取文件信息(不解析符号链接)</td>
+<td>fs.lstat(path,[callback(err,stats)])</td>
+<td>fs.lstatSync(path)</td>
+</tr>
+<tr>
+<td>创建硬链接</td>
+<td>fs.link(srcpath,dstpath,[callback(err)])</td>
+<td>fs.linkSync(srcpath.dstpath)</td>
+</tr>
+<tr>
+<td>创建符号链接</td>
+<td>fs.symlink(linkdata,path,[type],[callback(err)])</td>
+<td>fs.symlinkSync(linkdata,path,[type])</td>
+</tr>
+<tr>
+<td>读取链接</td>
+<td>fs.readlink(path,[callback(err,linkstring)])</td>
+<td>fs.readlinkSync(path)</td>
+</tr>
+<tr>
+<td>修改文件时间戳</td>
+<td>fs.utimes(path,atime,mtime,[callback(err)])</td>
+<td>fs.utimesSync(path,atime,mtime)</td>
+</tr>
+<tr>
+<td>修改文件时间戳(文件扫描符)</td>
+<td>fs.futimes(fd,atime,mtime,[callback(err)])</td>
+<td>fs.futimesSync(fd,atime,mtime)</td>
+</tr>
+<tr>
+<td>同步磁盘缓存</td>
+<td>fs.fsync(fd,[callback(err)])</td>
+<td>fs.fsyncSync(fd)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>#####HTTP服务器与客户端<br>http模块封装了一个高效的HTTP服务器和一个简易的HTTP客户端.</p>
+<blockquote>
+<p>服务器常用函数</p>
+</blockquote>
+<ul>
+<li><p>http.server</p>
+<ul>
+<li>request: 当客户端请求到来时,该事件被触发;</li>
+<li>connection: 当TCP连接建立时,该事件被触发,提供一个参数socket,为net.Socket的实例;</li>
+<li>close:当服务器关闭时,该事件被触发;</li>
+</ul>
+</li>
+<li><p>http.ServerRequest  HTTP请求的信息,HTTP请求一般分为:请求头(Request Header)和请求体(Request Body)</p>
+<ul>
+<li>data: 当请求数据到来时,该事件被触发;</li>
+<li>end: 当请求体数据传输完成时,该事件被触发,此后将不会再有数据到来;</li>
+<li>close:用户当前请求结束时,该事件被触发;</li>
+</ul>
+</li>
+<li><p>http.ServerResponse 返回给客户端的信息</p>
+<ul>
+<li>response.writeHead(statusCode,[headers]): 请求响应头<ul>
+<li>statusCode: HTTP的状态码</li>
+<li>headers:数组对象</li>
+</ul>
+</li>
+<li>response.write(data,[encoding]): 向请求的客户端发送响应内容<ul>
+<li>data:一个Buffer或者字符串</li>
+<li>encoding:编码方式,默认 utf-8</li>
+</ul>
+</li>
+<li>response.end([data],[endcoding]): 结束响应,告诉客户端所有发送已经完成</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>客户端常用函数</p>
+</blockquote>
+<ul>
+<li><p>http.request(options,callback)  发起请求,返回一个http.ClientRequest实例</p>
+<ul>
+<li>options:  参数的关联数组<ul>
+<li>host: 网站域名或者IP地址</li>
+<li>port：网站端口</li>
+<li>method: 请求方法,默认是GET</li>
+<li>path: 请求相对根的目录,默认是”/“</li>
+<li>headers: 一个关联数组对象,请求头的内容</li>
+</ul>
+</li>
+<li>callback: 传递Http.ClientResponse参数</li>
+</ul>
+</li>
+<li><p>http.get(options,callback) 更加简洁的办法处理GET请求</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line">http.get(&#123;host:<span class="string">"www.chenrongrong.com"</span>&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">    res.setEncoding(<span class="string">'utf-8'</span>);</span><br><span class="line">    res.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(data);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>http.ClientRequest 表示一个已经产生而且正在进行中的HTTP请求</p>
+<ul>
+<li>request.abort() 终止正在发送的请求</li>
+<li>request.setTimeout(timeout,[callback]) 设置请求超时时间,timeout为毫秒数,请求超时之后,callback()将会被调用</li>
+</ul>
+</li>
+<li><p>http.clientResponse 表示请求结果状态</p>
+<ul>
+<li>response.setEncoding([encoding]) : 设置默认编码</li>
+<li>response.pause() : 暂停接收数据和发送事件,方便下载功能</li>
+<li>response.resume() : 从暂停的状态中恢复</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>statuscode</td>
+<td>HTTP状态码,如200,404,500</td>
+</tr>
+<tr>
+<td>httpVersion</td>
+<td>HTTP协议版本,通常是1.0 or 1.1</td>
+</tr>
+<tr>
+<td>headers</td>
+<td>HTTP请求头</td>
+</tr>
+<tr>
+<td>trailers</td>
+<td>HTTP请求尾(不常见)</td>
+</tr>
+</tbody>
+</table>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术文档/">技术文档</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/node-js/">node.js</a><a href="/tags/开发/">开发</a><a href="/tags/语言/">语言</a><a href="/tags/技术/">技术</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2014/12/31/Node-js开发指南/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/12/31/Node-js开发指南/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/17/烛之泪/" title="烛之泪" itemprop="url">烛之泪</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ron Chen" target="_blank" itemprop="author">Ron Chen</a>
+		
+  <p class="article-time">
+    <time datetime="2014-12-17T03:42:18.000Z" itemprop="datePublished"> 发表于 2014-12-17</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <blockquote>
+<p>当烛光渐渐微弱，周围都将消失不见，余下的只有回忆！</p>
+</blockquote>
+<p>晚上看到一篇文章，写的是程序员为什么喜欢夜间工作。脑海中勾勒了一副画面，时至深夜，周围寂静，明亮的屏幕面前奏击着键盘。加上一些轻柔你的音乐，多少个夜晚你是这样度过。烛光渐渐微弱，黑夜渐渐深入，留下的就是没有一丝打扰，他有明确的思路，有前进的方向，为什么不选择一股作气的做下去呢？<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2014/12/17/烛之泪/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/文字感官/">文字感官</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/锁/">锁</a><a href="/tags/深夜/">深夜</a><a href="/tags/坚持/">坚持</a><a href="/tags/不放弃/">不放弃</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2014/12/17/烛之泪/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/12/17/烛之泪/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/11/26/最遥远的距离/" title="《最遥远的距离》" itemprop="url">《最遥远的距离》</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ron Chen" target="_blank" itemprop="author">Ron Chen</a>
+		
+  <p class="article-time">
+    <time datetime="2014-11-26T03:15:00.000Z" itemprop="datePublished"> 发表于 2014-11-26</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p><img src="http://ronchen.qiniudn.com/longlongaway8d5494eef01f3a29b3d518b59925bc315c607ca8.jpg" alt="最遥远的距离剧照"><br>一个机缘巧合的机会，我昨天在地铁上看了电影《最遥远的距离》。看到了不同职位的三个人因为对现状生活的不满意交织到了一起。企业白领，心理治疗师，录音师，他们都有一段不美满的恋爱甚至是婚姻。录音师在接受心理治疗之后的哭泣，引发了我的思考。</p>
+<ul>
+<li>心理治疗师通过角色互换治疗他之后，那痛哭的场景，是否有顿悟的感觉，未来会积极的面对现实的生活吗？将放弃他的那个女孩关进心底，重新踏上自己的录音事业？预想着就是一个失落青年重整旗鼓的故事，还有一个的女粉丝一直在追随他环游台湾的脚步…</li>
+<li>女主角同样有一段不堪回忆的恋爱，偶然的搬到了录音师前女友住过的房子里，坚持听录音师与前女友约定的福尔摩沙之音，让他对录音师有了向往，终于决心去追寻录音师的脚步，去同一个地方留下自己的音迹。打听着这位录音师的一切，当别人问他为什么去哪些地方的时候，她不知如何回答，只知道我就是要去那个地方，每一次都只能发现那是他走过的痕迹的时候却又感觉到和他拥有遥远的距离,当她艰难的找到几个地方之后，有找到了一片墓地，她哭泣了，应该是感觉到了他与她之间遥远的距离，这时候早已忘记了找到第一个地方的兴奋</li>
+</ul>
+<blockquote>
+<p>好了，我要下车了，有空再继续看故事发展，希望有一个好的结局吧！</p>
+</blockquote>
+<hr>
+<p>当天晚上看完了这部电影，三个人都找到了自己新的归宿，男女主角在同一时间到达了同一片沙滩，他们面向同一片海洋，就那样结束了。增加了令人浮现的场景，让结局由观众去想象。那位心理治疗师则在自己心中的海洋寻找到了自己的方向，努力游行，坚信自己一定可以战胜过去的自己。</p>
+<p>电影终究是电影，生活的不堪在多少个世纪中不断循环。积极面对生活，一切都需要自己去确定方向。我在努力前行，祈祷不会那么曲折。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/文字感官/">文字感官</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/电影/">电影</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2014/11/26/最遥远的距离/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/11/26/最遥远的距离/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/10/03/花果山/" title="花果山" itemprop="url">花果山</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ron Chen" target="_blank" itemprop="author">Ron Chen</a>
+		
+  <p class="article-time">
+    <time datetime="2014-10-03T03:02:07.000Z" itemprop="datePublished"> 发表于 2014-10-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>####花果山</p>
+<blockquote>
+<p>海外有一国土，名曰傲来国。国近大海，海中有一座名山，唤为花果山。此山乃十洲之祖脉，三岛之来龙，自开清浊而立，鸿蒙判后而成。</p>
+</blockquote>
+<hr>
+<p>看西游记中对花果山的描述，联想到自己今年毫无计划的去了一趟连云港的花果山。作为国家星级景区,在十一国庆周的时间段,下了连云港的高速口之后直奔花果山,可能是比较早的缘故，一路上畅通无阻，发现前面拥挤的时候，感觉已经到花果山了，入口需要经过一条很长的路，行驶一小段之后便会发现路边拉停车位的小贩(30块钱一天,里面五十，也有人说里面六十，)，我们一路上半信半疑的进入到了景区的停车场，结果是15块钱。当时感觉到他们靠山吃山，因为这个景区周围多少人有了生计。这还没有什么，进入到景区，门口那个队伍排的毫无秩序，工作人员只管收钱撕票，还会问几个人，心中好像在算着什么…<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2014/10/03/花果山/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/文字感官/">文字感官</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/花果山/">花果山</a><a href="/tags/西游记/">西游记</a><a href="/tags/连云港/">连云港</a><a href="/tags/旅游/">旅游</a><a href="/tags/商业化/">商业化</a><a href="/tags/景区/">景区</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2014/10/03/花果山/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/10/03/花果山/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/06/04/项目拯救/" title="项目拯救" itemprop="url">项目拯救</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ron Chen" target="_blank" itemprop="author">Ron Chen</a>
+		
+  <p class="article-time">
+    <time datetime="2014-06-04T08:49:38.000Z" itemprop="datePublished"> 发表于 2014-06-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="拯救项目"><a href="#拯救项目" class="headerlink" title="####拯救项目"></a>####拯救项目</h1><blockquote>
+<p><em>项目失败每天都有不同的案例，这些事情对于个人来说都是崩溃的事情，如何监测和控制成为一种必须要研究的解决方案。</em> 今天就通过自己看到的书籍，网上大神的意见，综合自己的看法，写一个系列，剖析一下项目拯救的细节要素，希望今后的团队工作的开心，一起创造。</p>
+</blockquote>
+<p>看到这些，让我想起了一家之前工作过的在线旅游的公司。他们公司的项目做了十年多，而我2013年接触到这个项目，比较幼嫩的我，完全看不出这个项目隐藏的危机。(顺道来抱怨一下这个项目：刚进去听前人说，这个项目开始于2003年，大概2006年上线了一个版本也赚到了一些钱，2009年左右，老板需要添加一些新的功能，从前台页面开始重新设计并添加了众多模块，悲剧就此上演了，之前的开发团队已经散去，新项目当然全部是新人，这个也不为过。找了以前的人以兼职的形式带领新人去开发这个项目。老板亲自管理开发团队，她对这个项目有十足的信心，十分希望能帮她的项目正常上线，出去宣传都是夸下海口，这个项目什么时候什么时候能上线…拉动政府关系，寻求政府资金支持等等公关都是老板一个人在干…</p>
+<p>从我接触这个项目没有对这个项目进行分析，从团队来看，当时我们开发团队4人，测试人员1名，兼职人员2名，一个负责需求设计，一个负责数据库的维护。开发人员中有一个担任管理工作，负责每天的任务交接以及任务检查。兼职人员每个周末来测试这个项目进度，以及提出新的需求什么的，需求人员觉得需要添加什么功能了，数据库设计人员觉得少了什么字段了，都是口头的说明，老板说，恩这个需要改，就转交到开发人员手中，之后又不做跟踪，下个周还是这么个流程继续运作着，期间问题不断，改Bug，添加一些功能成为了每天必备的工作任务。</p>
+<p>接触时间长了，发现老总不相信任何人。之前经过她提出的需求，她看到网页变化之后又不承认那是自己提出的需求，硬要开发人员拿出证据，后来开发人员需要通过邮件确认的东西才会去修改，有字有据以免大家都忘记谁提的需求，谁做出的修改。记得那时十月一日，放假期间，老板打电话给我，让我看看网站怎么变样了，我上去一看，是广告位不显示了，导致下面内容块错位了。由于这个公司的开发环境是封闭的，在公司是上不了网的，只能到上班时间去改，告诉她原因的时候，说广告的时间到期了，前台没有读取到数据，那部分空出来之后被下面的内容给暂用了。结果她说是谁设置广告到期的，定时给我们网站制造问题吗？这是隐形炸弹呀，能不能找到是谁干的，以前的开发人员什么什么的…抱怨完了…我们就当什么都没有听到，继续工作去了。这种事情很多次，开发人员换了N的平方次了，坚持了6个月左右我坚持不住了，走的时候我已经是最后一个走的了，面对一批新人，要我担任管理，我看到了前人的下场，感觉到自己的未来式一样的下场。还是提前自己提出离职比较靠谱，终于在11月中旬离开了这个项目。后期项目也就不得而知了，只知道很在那样的玩转，不断的换人在做，永远都说自己的项目就快上线了，这都成为她的口头禅了。</p>
+<p>当时我查询了项目成功的关键因素，反过来没有达到这些的就是失败的项目吧！</p>
+<ul>
+<li>一个优秀的团队（很明显针对这个项目而言，这只团队因为种种原因不够优秀）</li>
+<li>管理上有序而且有效（不相信专业人才的管理，全靠自己管理，一团乱）</li>
+<li>计划期限和成本都在可控范围内（时间严重超期，成本不断攀升）</li>
+<li>制定发布计划，市场评估计划，迭代计划等（虽说这个公司都有这些计划，但都是前人留下的东西，新人没有专门的管理人员督促实施，也就相当于没有）</li>
+</ul>
+<p><img src="http://ronchen.qiniudn.com/ronchen拯救项目.jpg" alt="参考书籍"></p>
+<p>这是我系列的第一篇文章，引出后面拯救项目的必要条件，项目管理也许是人人都能做的事情，但绝不是人人都能做好的事情。在互联网影响到其他行业的时候，各个行业的精英都觉得自己拥有互联网思维，都有能力去管理这些项目，祈祷你们的项目能成功吧，做互联网项目真的那么简单吗？至少我接触过好多外界人士都认为项目开发都是简单的事情，人人都能完成的事情。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/管理经验/">管理经验</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/开发/">开发</a><a href="/tags/项目拯救/">项目拯救</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2014/06/04/项目拯救/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/06/04/项目拯救/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/12/15/功能树/" title="功能树" itemprop="url">功能树</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ron Chen" target="_blank" itemprop="author">Ron Chen</a>
+		
+  <p class="article-time">
+    <time datetime="2013-12-15T02:50:59.000Z" itemprop="datePublished"> 发表于 2013-12-15</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <blockquote>
+<p>功能树，作为管理信息系统的一种树型结构，将系统的功能采用图形的方式显示出来，方便团队成员信息共享。根据不同级别的需求人员，需求文档略有不同。架构师的工作就是将不同级别的需求人员整理出来的文档进行提取出适合团队的功能树结构。</p>
+</blockquote>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2013/12/15/功能树/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/管理经验/">管理经验</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/功能树/">功能树</a><a href="/tags/估值/">估值</a><a href="/tags/功能点/">功能点</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/12/15/功能树/#comments" class="ds-thread-count comments-count-link" data-thread-key="2013/12/15/功能树/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="wecall" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/技术文档/" title="技术文档">技术文档<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/文字感官/" title="文字感官">文字感官<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/管理经验/" title="管理经验">管理经验<sup>5</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/语法/" title="语法">语法<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/开发/" title="开发">开发<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术/" title="技术">技术<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php/" title="php">php<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/编程/" title="编程">编程<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/成员/" title="成员">成员<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/node-js/" title="node.js">node.js<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mongoDB/" title="mongoDB">mongoDB<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/db/" title="db">db<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/规范/" title="规范">规范<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Makedown/" title="Makedown">Makedown<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码/" title="代码">代码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/摩羯座/" title="摩羯座">摩羯座<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/函数/" title="函数">函数<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/zencode/" title="zencode">zencode<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/互联网/" title="互联网">互联网<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/公众策划/" title="公众策划">公众策划<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/功能树/" title="功能树">功能树<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/估值/" title="估值">估值<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/功能点/" title="功能点">功能点<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://mindhacks.cn/" target="_blank" title="思维改变生活">刘未鹏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com" target="_blank" title="交流故事，沟通想法">间书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+<div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+              <a href="http://www.wecall.me" target="_blank" title="陈荣荣">Ron Chen</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=9&isTitle=0&noborder=1&isWeibo=1&isFans=1&uid=2663573787&verifier=4fc57bc7&dpc=1"></iframe>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 有理想的人，生活总是火热的。Hello ! I&#39;m Ron Chen in ShangHai China . <br/>
+			--天空虽不曾留下痕迹，但我已飞过。</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2663573787" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wecall" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Ron Chen">Ron Chen</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>
